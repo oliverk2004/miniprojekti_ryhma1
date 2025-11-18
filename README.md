@@ -1,6 +1,6 @@
 # miniprojekti\_ryhma1
 
-!\[GHA workflow badge](https://github.com/oliverk2004/miniprojekti\_ryhma1/workflows/CI/badge.svg)
+!\[GHA workflow badge](https://github.com/oliverk2004/miniprojekti\_ryhma1/workflows/main.yml/badge.svg)
 
 
 
