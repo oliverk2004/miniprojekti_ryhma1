@@ -1,20 +1,21 @@
 import os
 BIBFILE = "viitteet.bib"
 
-def listaa_viitteet():
-    with open(BIBFILE, "r", encoding="utf-8") as f:
-        content = f.read().strip()
+def listaa_viitteet(bib_tiedosto):
+    try:
+        with open(bib_tiedosto, "r", encoding="utf-8") as f:
+            content = f.read().strip()
 
-    if not content:
-        print("Ei lähdeviitteitä.\n")
-        return
-    
-    print("lähdeviitteet:")
-    print(content)
+        if not content:
+            print("Ei lähdeviitteitä.\n")
+            return
+        
+        print("lähdeviitteet:")
+        print(content)
+    except FileNotFoundError:
+        print(f"Ei lähdeviitteitä, sillä tiedostoa {bib_tiedosto} ei löytynyt.\n")
 
-
-
-def lisaa_viite():
+def lisaa_viite(bib_tiedosto):
     print("lisätään uusi lähdeviite.")
     tyyppi = input("Tyyppi: ")
     viiteavain = input("Viiteavain: ")
@@ -32,7 +33,7 @@ def lisaa_viite():
 
 #pitäisi luoda bibtexiin viitteen oikean muotoisena
     
-    with open(BIBFILE, "a", encoding="utf-8") as f:
+    with open(bib_tiedosto, "a", encoding="utf-8") as f:
         f.write("\n\n" + bibtex_block)
 
     print(f"lähde '{otsikko}' lisätty.\n")
@@ -45,10 +46,10 @@ def main():
         valitse = input ("> ").strip()
 
         if valitse == "lisää":
-            lisaa_viite()
+            lisaa_viite(BIBFILE)
             continue
         elif valitse == "listaa":
-            listaa_viitteet()
+            listaa_viitteet(BIBFILE)
             continue
         elif valitse == "lopeta":
             print("Heippa!\n")
