@@ -6,7 +6,7 @@ def listaa_viitteet():
         content = f.read().strip()
 
     if not content:
-        print("Ei lähdeviitteitä.")
+        print("Ei lähdeviitteitä.\n")
         return
     
     print("lähdeviitteet:")
@@ -35,22 +35,26 @@ def lisaa_viite():
     with open(BIBFILE, "a", encoding="utf-8") as f:
         f.write("\n\n" + bibtex_block)
 
-    print(f"lähde '{otsikko}' lisätty.")
+    print(f"lähde '{otsikko}' lisätty.\n")
 
 def main():
-    print("Tervetuloa lähdeviite työkaluun!")
-    print("Haluatko lisätä lähdeviitteen, listata lähdeviitteesi vai lopettaa?")
-    
-    valitse = input ("> ").strip()
+    print("\nTervetuloa lähdeviite työkaluun!")
+    while True:
+        print("Haluatko lisätä lähdeviitteen, listata lähdeviitteesi vai lopettaa?")
+        
+        valitse = input ("> ").strip()
 
-    if valitse == "lisää":
-        lisaa_viite()
-    elif valitse == "listaa":
-        listaa_viitteet()
-    elif valitse == "lopeta":
-        print("Heippa!")
-    else:
-        print("en tiedä mitä tarkoitat :(")
+        if valitse == "lisää":
+            lisaa_viite()
+            continue
+        elif valitse == "listaa":
+            listaa_viitteet()
+            continue
+        elif valitse == "lopeta":
+            print("Heippa!\n")
+            return
+        else:
+            print("en tiedä mitä tarkoitat :(\n")
 
 if __name__ == "__main__":
     main()
