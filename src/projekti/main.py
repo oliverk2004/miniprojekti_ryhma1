@@ -39,7 +39,7 @@ def lisaa_viite():
 
 def main():
     print("Tervetuloa lähdeviite työkaluun!")
-    print("Haluatko lisätä lähdeviitteen, nähdä lähdeviitteesi vai lopettaa?")
+    print("Haluatko lisätä lähdeviitteen, listata lähdeviitteesi vai lopettaa?")
     
     valitse = input ("> ").strip()
 
