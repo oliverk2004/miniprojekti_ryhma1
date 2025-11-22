@@ -1,6 +1,7 @@
 from projekti.funktiot.bibtex_funktiot import listaa_viitteet, lisaa_viite
 from unittest.mock import Mock
 
+# Testi, että konsoli tulostaa "Ei lähdeviitteitä", kun viitteitä ei ole bib-tiedostossa.
 def test_listaa_viitteet_tyhja(tmp_path):
     tiedosto = tmp_path / "test.bib"
     tiedosto.write_text("", encoding = "utf-8")
