@@ -20,18 +20,42 @@ def lisaa_viite(bib_tiedosto, io: KonsoliIO):
     tekijä = io.lue("Tekijät: ").strip()
     otsikko = io.lue("Otsikko: ").strip()
     vuosi = io.lue("Vuosi: ")
-
+    io.kirjoita("")
 #tähän muut tärkeät tiedot jos esim doi tarvitsee tai muuta
-    
+
     bibtex_block = f"@{tyyppi}{{{viiteavain},\n" \
                f"tekijä = {{{tekijä}}},\n" \
                f"otsikko = {{{otsikko}}},\n" \
                f"vuosi = {{{vuosi}}},\n" \
                f"}}"
-
-#pitäisi luoda bibtexiin viitteen oikean muotoisena
     
-    with open(bib_tiedosto, "a", encoding="utf-8") as f:
-        f.write("\n\n" + bibtex_block)
+    # Tarkastetaan haluaako käyttäjä tallettaa viitteen vai peruuttaa tallennuksen.
+    tarkastaja = True
+    while tarkastaja == True:
 
-    io.kirjoita(f"lähde '{otsikko}' lisätty.\n")
+        io.kirjoita('-' * 20)
+        io.kirjoita("Syöttämäsi tiedot:")
+        io.kirjoita(f'{bibtex_block}')
+
+        # Käyttäjä syöttää komennon, jolla tallenetaan viite tai peruutetaan tallennus.
+        varmistus = io.lue('Haluatko tallentaa seuraavan viitteen? Kirjoita "Kyllä" tai "Ei".\n> ')
+
+        # Ei tallenneta.
+        if varmistus.lower() == "ei":
+            io.kirjoita("Tallennus peruutettu. Viitettä ei lisätty.")
+            tarkastaja = False
+            return # return-komento poistuu funktiosta
+
+        # Tallennetaan viite.
+        elif varmistus.lower() == "kyllä":
+            #pitäisi luoda bibtexiin viitteen oikean muotoisena
+            io.kirjoita('-' * 20)
+            with open(bib_tiedosto, "a", encoding="utf-8") as f:
+                f.write("\n\n" + bibtex_block)
+
+            io.kirjoita(f"lähde '{otsikko}' lisätty.\n")
+            tarkastaja = False
+
+        # Käyttäjä syötti jotain muuta kuin hyväksytyn "kyllä" tai "ei" komennon.
+        else:
+            io.kirjoita('Tuntematon komento. Kirjoita "Kyllä" tai "Ei" ilman tyhjiä välejä.')
