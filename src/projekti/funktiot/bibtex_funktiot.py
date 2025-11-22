@@ -1,4 +1,4 @@
-from projekti.funktiot.konsoli_IO import KonsoliIO
+from .konsoli_IO import KonsoliIO
 
 def listaa_viitteet(bib_tiedosto, io: KonsoliIO):
     try:
