@@ -10,10 +10,3 @@ Definition of done
 
 * Tested and works
 * 70% coverage rating
-
-Update 18.11. (Oliver):
-
-* Lisäsin nyt tuon (ainakin alkuun nyt tuon yksinkertaisen) CI Actionin, jolla pitäisi alkuun päästä. 
-* Badget pitäisi toimia ja tuon Codecov-badgen pitäisi toimia linkkinä tuonne branch-coverage raporttiin..
-* Tuolla on nyt src/ turha testi.py tiedosto ja sille testit, niin ne voi sieltä poistaa sitten kun alkaa koodia tekemään. (jätin nyt vaan, et näyttää badget coolimmalta) ;)
-* Muistakaa aina käyttää "git pull" -komentoa kun alatte tekemään! :)
