@@ -1,8 +1,13 @@
-# import os
+
 from funktiot.bibtex_funktiot import lisaa_viite, listaa_viitteet
 from funktiot.konsoli_IO import KonsoliIO
 
-BIBFILE = "viitteet.bib"
+import os
+
+HAKEMISTO = os.path.dirname(os.path.abspath(__file__))
+BIBFILE = os.path.join(HAKEMISTO, "viitteet.bib")
+
+#BIBFILE = "viitteet.bib"
 
 def main():
     io = KonsoliIO()
