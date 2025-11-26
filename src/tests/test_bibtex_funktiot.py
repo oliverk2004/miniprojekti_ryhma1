@@ -1,6 +1,6 @@
-from projekti.funktiot.bibtex_funktiot import listaa_viitteet, lisaa_viite
+from src.funktiot.bibtex_funktiot import listaa_viitteet, lisaa_viite
 from unittest.mock import Mock
-from projekti.StubIO import StubIO
+from src.StubIO import StubIO
 
 # Ajattelin, että Mock-olioiden hyödyntäminen voisi tässä tapauksessa olla sopiva vaihtoehto...
 # Testi, että konsoli tulostaa "Ei lähdeviitteitä", kun viitteitä ei ole bib-tiedostossa.
