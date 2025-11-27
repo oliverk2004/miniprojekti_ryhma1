@@ -15,18 +15,23 @@ def lataa_bibtex_tiedosto(bib_tiedosto):
         return None
 
 
+# Lisätään, että listaaminen tapahtuu käyttäen pybtex-kirjastoa
 def listaa_viitteet(bib_tiedosto, io: KonsoliIO):
-    try:
-        with open(bib_tiedosto, "r", encoding="utf-8") as f:
-            content = f.read().strip()
 
-        if not content:
-            io.kirjoita("Ei lähdeviitteitä.\n")
-            return
-        
-        io.kirjoita(f"lähdeviitteet:\n{content}\n")
-    except FileNotFoundError:
-        io.kirjoita(f"Ei lähdeviitteitä, sillä tiedostoa {bib_tiedosto} ei löytynyt.\n")
+    bib_lähteet = lataa_bibtex_tiedosto(bib_tiedosto)
+
+    if bib_lähteet is None: # Eli jos tiedostoa ei olisikaan olemassa
+        try:
+            with open(bib_tiedosto, "r", encoding="utf-8") as f:
+                content = f.read().strip()
+
+            if not content:
+                io.kirjoita("Ei lähdeviitteitä.\n")
+                return
+            
+            io.kirjoita(f"lähdeviitteet:\n{content}\n")
+        except FileNotFoundError:
+            io.kirjoita(f"Ei lähdeviitteitä, sillä tiedostoa {bib_tiedosto} ei löytynyt.\n")
 
 def lisaa_viite(bib_tiedosto, io: KonsoliIO):
     io.kirjoita("lisätään uusi lähdeviite.")
