@@ -1,4 +1,19 @@
 from .konsoli_IO import KonsoliIO
+from pybtex.database import BibliographyData, Entry
+from pybtex.database.input import bibtex
+
+
+# Lataa ja parsee BibTex tiedoston käyttäen pybtex-kirjastoa.
+def lataa_bibtex_tiedosto(bib_tiedosto):
+    # tavoite, että palauttaa parsetun lähdeviitteen (siihen käytetään BibliographyData)
+    try:
+        parser = bibtex.Parser()
+        return parser.parse_file(bib_tiedosto)
+    except FileNotFoundError:
+        return None
+    except Exception:
+        return None
+
 
 def listaa_viitteet(bib_tiedosto, io: KonsoliIO):
     try:
