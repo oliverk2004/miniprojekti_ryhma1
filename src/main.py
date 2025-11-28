@@ -1,5 +1,6 @@
 
-from funktiot.bibtex_funktiot import lisaa_viite, listaa_viitteet
+from funktiot.lisaa_viite import lisaa_viite
+from funktiot.listaa_viitteet import listaa_viitteet
 from funktiot.konsoli_IO import KonsoliIO
 
 import os

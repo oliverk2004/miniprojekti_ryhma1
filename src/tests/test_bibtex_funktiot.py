@@ -1,4 +1,5 @@
-from src.funktiot.bibtex_funktiot import listaa_viitteet, lisaa_viite
+from src.funktiot.lisaa_viite import lisaa_viite
+from src.funktiot.listaa_viitteet import listaa_viitteet
 from unittest.mock import Mock
 from src.StubIO import StubIO
 
