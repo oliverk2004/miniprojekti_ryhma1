@@ -1,5 +1,6 @@
 from src.funktiot.lisaa_viite import lisaa_viite
 from src.funktiot.listaa_viitteet import listaa_viitteet
+from src.funktiot.poista_viite import poista_viite
 from unittest.mock import Mock
 from src.StubIO import StubIO
 
@@ -77,3 +78,31 @@ def test_lisaa_viite_peruutus(tmp_path):
         tarkistettu_sisalto = f.read().strip()
     
     assert tarkistettu_sisalto == alkuperainen_sisalto
+
+
+def test_lisaa_viite(tmp_path):
+    tiedosto = tmp_path / "test.bib"
+    tiedosto.write_text("", encoding="utf-8")
+
+    io = StubIO()
+    io.input = [
+        "book", 
+        "viiteavain", 
+        "Ankka, Aku", 
+        "Otsikko", 
+        "2025", 
+        "Kyllä"     # Vahvistus, että viite lisätään. 
+    ]
+
+    lisaa_viite(tiedosto, io)
+
+    # Tarkistetaan, että lisääntyy eli "lisätty" tulee tekstinä
+    assert any("lisätty" in r for r in io.output)
+
+    with open(tiedosto, "r", encoding="utf-8") as f:
+        data = f.read()
+        assert "viiteavain" in data
+        assert "Otsikko" in data
+
+
+# def test_poista_viite(tmp_path):
