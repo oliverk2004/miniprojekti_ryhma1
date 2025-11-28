@@ -80,6 +80,37 @@ def test_lisaa_viite_peruutus(tmp_path):
     assert tarkistettu_sisalto == alkuperainen_sisalto
 
 
+# Jos vahvistuksessa käyttäjä antaakin jonkin muun kuin "kyllä" tai "ei"
+def test_lisaa_viite_tuntematon_vahvistus(tmp_path):
+    tiedosto = tmp_path / "test_tuntematon.bib"
+    alkuperainen_sisalto = "Olemassa oleva viite."
+    tiedosto.write_text(alkuperainen_sisalto, encoding="utf-8")
+
+    syotteet = [
+        "article",
+        "PeruutusAvain",
+        "Mallikappale, P.",
+        "Peruutettu artikkeli",
+        "2024",
+        "Tuntematon",  
+        "Ei"            # tarvitaan, koska funktio jatkaa kysymistä
+    ]
+
+    io = StubIO()
+    io.input = syotteet
+
+    lisaa_viite(tiedosto, io)
+
+    # Tarkista, että tuntematon komento tulostui
+    assert any("Tuntematon komento." in tuloste for tuloste in io.output)
+
+    # Tarkista, ettei tiedoston sisältö muuttunut
+    with open(tiedosto, "r", encoding="utf-8") as f:
+        tarkistettu_sisalto = f.read().strip()
+
+    assert tarkistettu_sisalto == alkuperainen_sisalto
+
+
 def test_lisaa_viite(tmp_path):
     tiedosto = tmp_path / "test.bib"
     tiedosto.write_text("", encoding="utf-8")
