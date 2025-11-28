@@ -1,6 +1,6 @@
-
 from funktiot.lisaa_viite import lisaa_viite
 from funktiot.listaa_viitteet import listaa_viitteet
+from funktiot.poista_viite import poista_viite
 from funktiot.konsoli_IO import KonsoliIO
 
 import os
@@ -14,7 +14,7 @@ def main():
     io = KonsoliIO()
     io.kirjoita("\nTervetuloa lähdeviite työkaluun!")
     while True:
-        io.kirjoita("Haluatko lisätä lähdeviitteen, listata lähdeviitteesi vai lopettaa?")
+        io.kirjoita("Haluatko lisätä lähdeviitteen, listata lähdeviitteesi, poistaa lähdeviitteen vai lopettaa?")
         
         valitse = io.lue("> ").strip()
 
@@ -23,6 +23,9 @@ def main():
             continue
         elif valitse == "listaa":
             listaa_viitteet(BIBFILE, io)
+            continue
+        elif valitse == "poista":
+            poista_viite(BIBFILE, io)
             continue
         elif valitse == "lopeta":
             io.kirjoita("Heippa!\n")

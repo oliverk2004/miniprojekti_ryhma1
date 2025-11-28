@@ -1,6 +1,4 @@
 from pybtex.database import BibliographyData, Entry
-from pybtex.database.input import bibtex
-from pybtex.database.output.bibtex import Writer
 from .konsoli_IO import KonsoliIO
 from .bibtex_funktiot import lataa_bibtex_tiedosto, tallenna, parsi_bibtex
 
@@ -23,7 +21,7 @@ def lisaa_viite(bib_tiedosto, konsoli: KonsoliIO):
     entry = Entry(tyyppi, fields=kentät)
     
     if vahvista(konsoli, viiteavain, entry):
-        tallenna(konsoli, viiteavain, entry, bib_tiedosto, bib_data)
+        tallenna_lisays(konsoli, viiteavain, entry, bib_tiedosto, bib_data)
 
 def lisaa_viiteavain(konsoli, bib_data):
     while True:
@@ -80,3 +78,16 @@ def vahvista(konsoli, viiteavain, entry):
         else:
             konsoli.kirjoita('Tuntematon komento.\n')
             continue
+
+def tallenna_lisays(konsoli, viiteavain, entry, bib_tiedosto, bib_data):
+
+    # Lisää uusi viite viitteet.bib
+    bib_data.entries[viiteavain] = entry
+    
+    otsikko = entry.fields.get('title', 'Otsikkoa ei syötetty')
+    # Tallenna tiedostoon
+    try:
+        tallenna(bib_tiedosto, bib_data)
+        konsoli.kirjoita(f"lähde '{otsikko}' lisätty.\n")
+    except Exception as e:
+        konsoli.kirjoita(f"Virhe tallennuksessa: {e}\n")
