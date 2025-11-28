@@ -54,23 +54,23 @@ def lisaa_viite(bib_tiedosto, konsoli: KonsoliIO):
     konsoli.kirjoita("lisätään uusi lähdeviite.")
     
     tyyppi = konsoli.lue("Tyyppi: ").strip().lower()
-    viiteavain = konsoli.lue("Viiteavain: ").strip()
-    
-    # TODO: Halutaanko, että viiteavain pakko olla???
-    if not viiteavain:
-        konsoli.kirjoita("Virhe: Viiteavain ei voi olla tyhjä.\n")
-        return
-    
-    # Lataa olemassa olevat viitteet viitteet.bib tiedostosta
-    bib_data = lataa_bibtex_tiedosto(bib_tiedosto)
-    if bib_data is None:
-        # Taas tein tämän, jos ei olisi viitteet.bib tiedostoa jo luotuna
-        bib_data = BibliographyData()
-    
-    # TODO: Varmaan halutaan, että ei voi tietenkään samalla viiteavaimella tehdä lähdeviitettä, koska lähteillä oma DOI???
-    if viiteavain in bib_data.entries:
-        konsoli.kirjoita(f"Virhe: Viiteavain '{viiteavain}' on jo käytössä.\n")
-        return
+
+    while True:
+        viiteavain = konsoli.lue("Viiteavain: ").strip()
+        if not viiteavain:
+            konsoli.kirjoita("Virhe: Viiteavain ei voi olla tyhjä.\n")
+            continue
+        # Lataa olemassa olevat viitteet viitteet.bib tiedostosta
+        bib_data = lataa_bibtex_tiedosto(bib_tiedosto)
+        if bib_data is None:
+            # Taas tein tämän, jos ei olisi viitteet.bib tiedostoa jo luotuna
+            bib_data = BibliographyData()
+        
+        # TODO: Varmaan halutaan, että ei voi tietenkään samalla viiteavaimella tehdä lähdeviitettä, koska lähteillä oma DOI???
+        if viiteavain in bib_data.entries:
+            konsoli.kirjoita(f"Virhe: Viiteavain '{viiteavain}' on jo käytössä.\n")
+            continue
+        break
     
     # Nuo kentät['author'] esimerkiksi pitää olla enkuksi tuon pybtexin takia, mutta ei muuta ohjelman suorittamisessa mitään.
     kentät = {}
@@ -109,7 +109,7 @@ def lisaa_viite(bib_tiedosto, konsoli: KonsoliIO):
         varmistus = konsoli.lue('Haluatko tallentaa seuraavan viitteen? Kirjoita "Kyllä" tai "Ei".\n> ')
         
         if varmistus.lower() == "ei":
-            konsoli.kirjoita("Tallennus peruutettu. Viitettä ei lisätty.")
+            konsoli.kirjoita("Tallennus peruutettu. Viitettä ei lisätty.\n")
             tarkastaja = False
             return
         elif varmistus.lower() == "kyllä":
