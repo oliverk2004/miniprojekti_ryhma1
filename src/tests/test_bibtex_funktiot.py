@@ -17,13 +17,16 @@ def test_listaa_viitteet_tyhja(tmp_path):
 # Testi, että konsoli tulostaa viitteet sisältöineen. 
 def test_listaa_viitteet(tmp_path):
     tiedosto = tmp_path / "test.bib"
-    tiedosto.write_text("@tyyppi{viiteavain, tekijä={Esimerkki}}", encoding = "utf-8")
+    tiedosto.write_text("@article{viiteavain, author={Esimerkki}, title={Testi}, year={2025}}", 
+                        encoding = "utf-8")
 
     io = StubIO()
     listaa_viitteet(tiedosto, io)
 
     assert "lähdeviitteet:" in io.output[0]
-    assert "@tyyppi{viiteavain" in io.output[0]
+    assert "@article{viiteavain" in io.output[0]
+
+    assert "viiteavain" in io.output[0]
 
 
 # Testi, kun tiedostoa ei löydy
