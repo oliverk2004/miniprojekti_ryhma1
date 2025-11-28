@@ -136,4 +136,26 @@ def test_lisaa_viite(tmp_path):
         assert "Otsikko" in data
 
 
-# def test_poista_viite(tmp_path):
+def test_poista_viite(tmp_path):
+    tiedosto = tmp_path / "test.bib"
+    tiedosto.write_text("@book{viiteavain, author={Ankka, Aku}, title={Otsikko}, year={2025}}", 
+                        encoding="utf-8")
+
+    io = StubIO()
+    io.input = [
+        "viiteavain", 
+        "Kyllä"     # vahvistus, että perutaan
+    ]
+
+    poista_viite(tiedosto, io)
+
+    # Tarkistetaan, että poistuu eli "onnistui" tulee tekstinä "Viitteen poistaminen onnistui\n"
+    assert any("onnistui" in r for r in io.output)
+
+    # Testataan se, että tiedostossa ei ole enää mitään
+    with open(tiedosto, "r", encoding="utf-8") as f:
+        data = f.read()
+        assert "viiteavain" not in data
+        assert "Otsikko" not in data
+
+   
