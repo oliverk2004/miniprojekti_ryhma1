@@ -24,3 +24,7 @@ Käyttäjä Lisää Viitteen
     [Arguments]    ${tyyppi}    ${viiteavain}    &{kentät}
     Lisaa Viite Bib Tiedostoon     ${tyyppi}    ${viiteavain}    &{kentät}
 
+
+Käyttäjä Listaa Viitteet
+    Call Listaa Viitteet
+    
