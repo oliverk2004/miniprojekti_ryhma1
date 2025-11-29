@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.10.11 on win32)" generated="20251129 12:10:43.153" rpa="false" schemaversion="4">
-<suite id="s1" name="Tests" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src\tests">
-<suite id="s1-s1" name="Listaa Viitteet" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src\tests\listaa_viitteet.robot">
+<robot generator="Robot 6.1.1 (Python 3.10.11 on win32)" generated="20251129 12:19:19.851" rpa="false" schemaversion="4">
+<suite id="s1" name="Src" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src">
+<suite id="s1-s1" name="Tests" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src\tests">
+<suite id="s1-s1-s1" name="Listaa Viitteet" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src\tests\listaa_viitteet.robot">
 <kw name="Testausympäristö Asetettu" library="resource" type="SETUP">
 <kw name="Luo Testi Io" library="RobotLibrary">
-<status status="PASS" starttime="20251129 12:10:43.300" endtime="20251129 12:10:43.300"/>
+<status status="PASS" starttime="20251129 12:19:19.992" endtime="20251129 12:19:19.992"/>
 </kw>
 <kw name="Aseta Testi Tiedosto" library="RobotLibrary">
 <arg>${TEST_BIB_FILE}</arg>
-<status status="PASS" starttime="20251129 12:10:43.300" endtime="20251129 12:10:43.300"/>
+<status status="PASS" starttime="20251129 12:19:19.992" endtime="20251129 12:19:19.992"/>
 </kw>
-<status status="PASS" starttime="20251129 12:10:43.300" endtime="20251129 12:10:43.300"/>
+<status status="PASS" starttime="20251129 12:19:19.992" endtime="20251129 12:19:19.992"/>
 </kw>
-<test id="s1-s1-t1" name="As A User I Want To See One Reference" line="7">
+<test id="s1-s1-s1-t1" name="As A User I Want To See One Reference" line="7">
 <kw name="Aseta Testi Tiedosto" library="RobotLibrary">
 <arg>${TEST_BIB_FILE}</arg>
-<status status="PASS" starttime="20251129 12:10:43.300" endtime="20251129 12:10:43.300"/>
+<status status="PASS" starttime="20251129 12:19:19.992" endtime="20251129 12:19:20.008"/>
 </kw>
 <kw name="Given Käyttäjä Lisää Viitteen" library="resource">
 <arg>kirja</arg>
@@ -27,43 +28,45 @@
 <arg>${tyyppi}</arg>
 <arg>${viiteavain}</arg>
 <arg>&amp;{kentät}</arg>
-<status status="PASS" starttime="20251129 12:10:43.300" endtime="20251129 12:10:44.438"/>
+<status status="PASS" starttime="20251129 12:19:20.008" endtime="20251129 12:19:20.962"/>
 </kw>
-<status status="PASS" starttime="20251129 12:10:43.300" endtime="20251129 12:10:44.438"/>
+<status status="PASS" starttime="20251129 12:19:20.008" endtime="20251129 12:19:20.962"/>
 </kw>
 <kw name="When Käyttäjä Listaa Viitteet" library="resource">
 <kw name="Call Listaa Viitteet" library="RobotLibrary">
-<status status="PASS" starttime="20251129 12:10:44.455" endtime="20251129 12:10:44.455"/>
+<status status="PASS" starttime="20251129 12:19:20.962" endtime="20251129 12:19:20.962"/>
 </kw>
-<status status="PASS" starttime="20251129 12:10:44.455" endtime="20251129 12:10:44.455"/>
+<status status="PASS" starttime="20251129 12:19:20.962" endtime="20251129 12:19:20.962"/>
 </kw>
 <kw name="Then Käyttäjä Näkee Tulostuksessa" library="resource">
 <arg>lähdeviitteet:</arg>
 <kw name="Tuloste Pitaisi Olla" library="RobotLibrary">
 <arg>${teksti}</arg>
-<status status="PASS" starttime="20251129 12:10:44.455" endtime="20251129 12:10:44.455"/>
+<status status="PASS" starttime="20251129 12:19:20.962" endtime="20251129 12:19:20.962"/>
 </kw>
-<status status="PASS" starttime="20251129 12:10:44.455" endtime="20251129 12:10:44.455"/>
+<status status="PASS" starttime="20251129 12:19:20.962" endtime="20251129 12:19:20.962"/>
 </kw>
 <kw name="And Käyttäjä Näkee Tulostuksessa" library="resource">
 <arg>kirja</arg>
 <kw name="Tuloste Pitaisi Olla" library="RobotLibrary">
 <arg>${teksti}</arg>
-<status status="PASS" starttime="20251129 12:10:44.455" endtime="20251129 12:10:44.455"/>
+<status status="PASS" starttime="20251129 12:19:20.962" endtime="20251129 12:19:20.962"/>
 </kw>
-<status status="PASS" starttime="20251129 12:10:44.455" endtime="20251129 12:10:44.455"/>
+<status status="PASS" starttime="20251129 12:19:20.962" endtime="20251129 12:19:20.962"/>
 </kw>
-<status status="PASS" starttime="20251129 12:10:43.300" endtime="20251129 12:10:44.455"/>
+<status status="PASS" starttime="20251129 12:19:19.992" endtime="20251129 12:19:20.962"/>
 </test>
 <kw name="Poista Turhat Testitiedostot" library="resource" type="TEARDOWN">
 <kw name="Poista Testi Tiedosto" library="RobotLibrary">
-<status status="PASS" starttime="20251129 12:10:44.471" endtime="20251129 12:10:44.471"/>
+<status status="PASS" starttime="20251129 12:19:20.982" endtime="20251129 12:19:20.984"/>
 </kw>
-<status status="PASS" starttime="20251129 12:10:44.471" endtime="20251129 12:10:44.471"/>
+<status status="PASS" starttime="20251129 12:19:20.982" endtime="20251129 12:19:20.984"/>
 </kw>
-<status status="PASS" starttime="20251129 12:10:43.190" endtime="20251129 12:10:44.471"/>
+<status status="PASS" starttime="20251129 12:19:19.911" endtime="20251129 12:19:20.984"/>
 </suite>
-<status status="PASS" starttime="20251129 12:10:43.158" endtime="20251129 12:10:44.471"/>
+<status status="PASS" starttime="20251129 12:19:19.903" endtime="20251129 12:19:20.984"/>
+</suite>
+<status status="PASS" starttime="20251129 12:19:19.851" endtime="20251129 12:19:20.989"/>
 </suite>
 <statistics>
 <total>
@@ -72,8 +75,9 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1" name="Listaa Viitteet">Tests.Listaa Viitteet</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Src">Src</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tests">Src.Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Listaa Viitteet">Src.Tests.Listaa Viitteet</stat>
 </suite>
 </statistics>
 <errors>
