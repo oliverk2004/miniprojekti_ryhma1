@@ -48,12 +48,12 @@ class Scraper:
         element_list = []
         title = self.driver.find_elements(By.CSS_SELECTOR, 'h1[property="name"]')
         authors = self.driver.find_elements(By.CLASS_NAME, "authors")
-        #published = self.driver.find_element(By.CLASS_NAME, "core-date-published")
+        published = self.driver.find_elements(By.CLASS_NAME, 'core-published')
 
         element_list.append([
             title[0].text,
             authors[0].text,
-            #published[0].text
+            published[0].text
         ])
 
         return element_list
