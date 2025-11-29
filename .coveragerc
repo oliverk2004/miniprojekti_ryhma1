@@ -4,3 +4,4 @@ omit =  src/tests/**
         src/projekti/__init__.py
         src/projekti/funktiot/__init__.py
         src/main.py
+        src/RobotLibrary.py
