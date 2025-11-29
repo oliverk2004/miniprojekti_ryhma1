@@ -60,3 +60,13 @@ class RobotLibrary:
             return f"Tiedosto poistettu."
         return "Ei tiedostoa mitä poistaa"
     
+
+    # Tarvitaan jokin metodi, jolla pystytään varmistamaan, että output sisältää halutun tekstin roboteissa
+    def tuloste_pitaisi_olla(self, teksti):
+        output = "\n".join(self.io.output)
+        if teksti in output:
+            return True
+        raise AssertionError(
+            f"Virhe! \n"
+            f"Tuloste on: \n{output}"
+        )

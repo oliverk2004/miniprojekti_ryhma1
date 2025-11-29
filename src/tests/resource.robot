@@ -27,4 +27,8 @@ Käyttäjä Lisää Viitteen
 
 Käyttäjä Listaa Viitteet
     Call Listaa Viitteet
-    
+
+
+Käyttäjä Näkee Tulostuksessa
+    [Arguments]    ${teksti}
+    Tuloste Pitaisi Olla    ${teksti}
