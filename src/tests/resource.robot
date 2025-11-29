@@ -19,3 +19,8 @@ Poista Turhat Testitiedostot
 Tyhjä BibTex Tiedosto
     Luo Tyhja Bib Tiedosto    ${TEST_BIB_FILE}
 
+
+Käyttäjä Lisää Viitteen
+    [Arguments]    ${tyyppi}    ${viiteavain}    &{kentät}
+    Lisaa Viite Bib Tiedostoon     ${tyyppi}    ${viiteavain}    &{kentät}
+

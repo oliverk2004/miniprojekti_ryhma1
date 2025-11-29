@@ -45,6 +45,14 @@ class RobotLibrary:
         return f"Viite lisätty {viiteavain}"
 
 
+    # Metodi, jolla käyttäjälle listataan viitteet
+    def call_listaa_viitteet(self):
+        if not self.io:     # Jos ei olisi jostain syystä luotu vielä
+            self.luo_testi_io()
+        listaa_viitteet(self.test_bib_file, self.io)
+        return "Viitteet listattu"
+    
+
     # Pitää luoda jokin metodi, jolla saadaan poistettua testitiedosto aina, jotta ei ole montaa testitiedostoa
     def poista_testi_tiedosto(self):
         if self.test_bib_file:
