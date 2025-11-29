@@ -12,6 +12,10 @@ Testausympäristö Asetettu
     Aseta Testi Tiedosto  ${TEST_BIB_FILE}
 
 
+Poista Turhat Testitiedostot
+    Poista Testi Tiedosto
+
+
 Tyhjä BibTex Tiedosto
     Luo Tyhja Bib Tiedosto    ${TEST_BIB_FILE}
 
