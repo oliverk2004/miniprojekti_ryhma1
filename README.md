@@ -10,3 +10,9 @@ Definition of done
 
 * Tested and works
 * 70% coverage rating
+
+
+Ennen asiakastapaamista 2.12. tehtävää:
+* Release täytyy vielä tehdä.
+* Työmäärät backlogiin.
+* Tilanne scraperin suhteen, mergetäänkö mainiin?
