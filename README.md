@@ -5,14 +5,10 @@
 
 
 Linkki product backlogiin: https://docs.google.com/spreadsheets/d/1ZGKiEBo8ZcU5mfkxilEXKQQ0CwQG2y874ZPvlpb-Exs/edit?gid=847551936#gid=847551936
+
 Linkki projektin raporttiin: https://docs.google.com/document/d/126KoFM-egbqnhBl0h8pirD0TB9yP6m_VFkniAewlPeU/edit?usp=sharing
 
 Definition of done
 
 * Tested and works
 * 70% coverage rating
-
-
-Ennen asiakastapaamista 2.12. tehtävää:
-* Työmäärät backlogiin.
-* Tilanne scraperin suhteen, mergetäänkö mainiin?
