@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.10.11 on win32)" generated="2025-12-02T22:04:56.815475" rpa="false" schemaversion="5">
+<suite id="s1" name="Src" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src">
+<suite id="s1-s1" name="Tests" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src\tests">
+<suite id="s1-s1-s1" name="Lisaa Viite" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src\tests\lisaa_viite.robot">
+<kw name="Testausympäristö Asetettu" owner="resource" type="SETUP">
+<kw name="Luo Testi Io" owner="RobotLibrary">
+<status status="PASS" start="2025-12-02T22:04:57.147952" elapsed="0.000565"/>
+</kw>
+<kw name="Aseta Testi Tiedosto" owner="RobotLibrary">
+<arg>${TEST_BIB_FILE}</arg>
+<status status="PASS" start="2025-12-02T22:04:57.149085" elapsed="0.000558"/>
+</kw>
+<status status="PASS" start="2025-12-02T22:04:57.145572" elapsed="0.004071"/>
+</kw>
+<test id="s1-s1-s1-t1" name="As A User I Want To Add References" line="9">
+<kw name="Aseta Testi Tiedosto" owner="RobotLibrary">
+<arg>${TEST_BIB_FILE}</arg>
+<status status="PASS" start="2025-12-02T22:04:57.151322" elapsed="0.000553"/>
+</kw>
+<kw name="Given Käyttäjä Lisää Viitteen" owner="resource">
+<kw name="Lisaa Viite Bib Tiedostoon" owner="RobotLibrary">
+<arg>${tyyppi}</arg>
+<arg>${viiteavain}</arg>
+<arg>&amp;{kentät}</arg>
+<status status="PASS" start="2025-12-02T22:04:57.154130" elapsed="1.276144"/>
+</kw>
+<arg>book</arg>
+<arg>lisätään123</arg>
+<arg>author=Lisääjä</arg>
+<arg>title=Lisäys</arg>
+<arg>year=1234</arg>
+<status status="PASS" start="2025-12-02T22:04:57.153007" elapsed="1.277267"/>
+</kw>
+<kw name="When Käyttäjä Listaa Viitteet" owner="resource">
+<kw name="Käyttäjä Listaa Viitteet Järjestyksessä" owner="resource">
+<kw name="Lajittele Syotteet" owner="RobotLibrary">
+<arg>${järjestys}</arg>
+<arg>poistu</arg>
+<status status="PASS" start="2025-12-02T22:04:58.430274" elapsed="0.000000"/>
+</kw>
+<kw name="Call Listaa Viitteet" owner="RobotLibrary">
+<status status="PASS" start="2025-12-02T22:04:58.441939" elapsed="0.002805"/>
+</kw>
+<arg>avain</arg>
+<status status="PASS" start="2025-12-02T22:04:58.430274" elapsed="0.015463"/>
+</kw>
+<status status="PASS" start="2025-12-02T22:04:58.430274" elapsed="0.015463"/>
+</kw>
+<kw name="Then Käyttäjä Näkee Tulostuksessa" owner="resource">
+<kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
+<arg>${teksti}</arg>
+<status status="PASS" start="2025-12-02T22:04:58.447741" elapsed="0.000000"/>
+</kw>
+<arg>book</arg>
+<status status="PASS" start="2025-12-02T22:04:58.446733" elapsed="0.001008"/>
+</kw>
+<kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
+<kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
+<arg>${teksti}</arg>
+<status status="PASS" start="2025-12-02T22:04:58.449733" elapsed="0.000000"/>
+</kw>
+<arg>lisätään123</arg>
+<status status="PASS" start="2025-12-02T22:04:58.448737" elapsed="0.001994"/>
+</kw>
+<kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
+<kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
+<arg>${teksti}</arg>
+<status status="PASS" start="2025-12-02T22:04:58.451732" elapsed="0.000000"/>
+</kw>
+<arg>Lisääjä</arg>
+<status status="PASS" start="2025-12-02T22:04:58.450731" elapsed="0.001001"/>
+</kw>
+<kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
+<kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
+<arg>${teksti}</arg>
+<status status="PASS" start="2025-12-02T22:04:58.453730" elapsed="0.000000"/>
+</kw>
+<arg>Lisäys</arg>
+<status status="PASS" start="2025-12-02T22:04:58.452735" elapsed="0.000995"/>
+</kw>
+<kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
+<kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
+<arg>${teksti}</arg>
+<status status="PASS" start="2025-12-02T22:04:58.454729" elapsed="0.001000"/>
+</kw>
+<arg>1234</arg>
+<status status="PASS" start="2025-12-02T22:04:58.454729" elapsed="0.001000"/>
+</kw>
+<status status="PASS" start="2025-12-02T22:04:57.150207" elapsed="1.305522"/>
+</test>
+<kw name="Poista Turhat Testitiedostot" owner="resource" type="TEARDOWN">
+<kw name="Poista Testi Tiedosto" owner="RobotLibrary">
+<status status="PASS" start="2025-12-02T22:04:58.459706" elapsed="0.000993"/>
+</kw>
+<status status="PASS" start="2025-12-02T22:04:58.458696" elapsed="0.003006"/>
+</kw>
+<status status="PASS" start="2025-12-02T22:04:56.958654" elapsed="1.503048"/>
+</suite>
+<suite id="s1-s1-s2" name="Listaa Viitteet" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src\tests\listaa_viitteet.robot">
+<kw name="Testausympäristö Asetettu" owner="resource" type="SETUP">
+<kw name="Luo Testi Io" owner="RobotLibrary">
+<status status="PASS" start="2025-12-02T22:04:58.475682" elapsed="0.000000"/>
+</kw>
+<kw name="Aseta Testi Tiedosto" owner="RobotLibrary">
+<arg>${TEST_BIB_FILE}</arg>
+<status status="PASS" start="2025-12-02T22:04:58.475682" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-12-02T22:04:58.475682" elapsed="0.000000"/>
+</kw>
+<test id="s1-s1-s2-t1" name="As A User I Want To See One Reference" line="7">
+<kw name="Aseta Testi Tiedosto" owner="RobotLibrary">
+<arg>${TEST_BIB_FILE}</arg>
+<status status="PASS" start="2025-12-02T22:04:58.475682" elapsed="0.000000"/>
+</kw>
+<kw name="Given Käyttäjä Lisää Viitteen" owner="resource">
+<kw name="Lisaa Viite Bib Tiedostoon" owner="RobotLibrary">
+<arg>${tyyppi}</arg>
+<arg>${viiteavain}</arg>
+<arg>&amp;{kentät}</arg>
+<status status="PASS" start="2025-12-02T22:04:58.475682" elapsed="1.632108"/>
+</kw>
+<arg>kirja</arg>
+<arg>testi123</arg>
+<arg>author=Kirjailija</arg>
+<arg>title=Testi</arg>
+<arg>year=2025</arg>
+<status status="PASS" start="2025-12-02T22:04:58.475682" elapsed="1.632108"/>
+</kw>
+<kw name="When Käyttäjä Listaa Viitteet" owner="resource">
+<kw name="Käyttäjä Listaa Viitteet Järjestyksessä" owner="resource">
+<kw name="Lajittele Syotteet" owner="RobotLibrary">
+<arg>${järjestys}</arg>
+<arg>poistu</arg>
+<status status="PASS" start="2025-12-02T22:05:00.111794" elapsed="0.000998"/>
+</kw>
+<kw name="Call Listaa Viitteet" owner="RobotLibrary">
+<status status="PASS" start="2025-12-02T22:05:00.113791" elapsed="0.002991"/>
+</kw>
+<arg>avain</arg>
+<status status="PASS" start="2025-12-02T22:05:00.110795" elapsed="0.005987"/>
+</kw>
+<status status="PASS" start="2025-12-02T22:05:00.108789" elapsed="0.009002"/>
+</kw>
+<kw name="Then Käyttäjä Näkee Tulostuksessa" owner="resource">
+<kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
+<msg time="2025-12-02T22:05:00.119793" level="FAIL">Virhe! 
+Tuloste on: 
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; 
+LÄHDEVIITTEET VIITEAVAIMEN MUKAAN
+@kirja{testi123,
+    author = "Kirjailija",
+    title = "Testi",
+    year = "2025"
+}
+
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; </msg>
+<arg>${teksti}</arg>
+<status status="FAIL" start="2025-12-02T22:05:00.118790" elapsed="0.002995">Virhe! 
+Tuloste on: 
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; 
+LÄHDEVIITTEET VIITEAVAIMEN MUKAAN
+@kirja{testi123,
+    author = "Kirjailija",
+    title = "Testi",
+    year = "2025"
+}
+
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; </status>
+</kw>
+<arg>lähdeviitteet:</arg>
+<status status="FAIL" start="2025-12-02T22:05:00.117791" elapsed="0.004997">Virhe! 
+Tuloste on: 
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; 
+LÄHDEVIITTEET VIITEAVAIMEN MUKAAN
+@kirja{testi123,
+    author = "Kirjailija",
+    title = "Testi",
+    year = "2025"
+}
+
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; </status>
+</kw>
+<kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
+<arg>kirja</arg>
+<status status="NOT RUN" start="2025-12-02T22:05:00.124789" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-12-02T22:04:58.475682" elapsed="1.650113">Virhe! 
+Tuloste on: 
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; 
+LÄHDEVIITTEET VIITEAVAIMEN MUKAAN
+@kirja{testi123,
+    author = "Kirjailija",
+    title = "Testi",
+    year = "2025"
+}
+
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; </status>
+</test>
+<test id="s1-s1-s2-t2" name="As A User I Want To See All My References" line="18">
+<kw name="Aseta Testi Tiedosto" owner="RobotLibrary">
+<arg>${TEST_BIB_FILE}</arg>
+<status status="PASS" start="2025-12-02T22:05:00.126525" elapsed="0.000000"/>
+</kw>
+<kw name="Given Käyttäjä Lisää Viitteen" owner="resource">
+<kw name="Lisaa Viite Bib Tiedostoon" owner="RobotLibrary">
+<arg>${tyyppi}</arg>
+<arg>${viiteavain}</arg>
+<arg>&amp;{kentät}</arg>
+<status status="PASS" start="2025-12-02T22:05:00.126525" elapsed="0.000000"/>
+</kw>
+<arg>kirja</arg>
+<arg>testi123</arg>
+<arg>author=Kirjailija</arg>
+<arg>title=Testi</arg>
+<arg>year=2025</arg>
+<status status="PASS" start="2025-12-02T22:05:00.126525" elapsed="0.000000"/>
+</kw>
+<kw name="Given Käyttäjä Lisää Viitteen" owner="resource">
+<kw name="Lisaa Viite Bib Tiedostoon" owner="RobotLibrary">
+<arg>${tyyppi}</arg>
+<arg>${viiteavain}</arg>
+<arg>&amp;{kentät}</arg>
+<status status="PASS" start="2025-12-02T22:05:00.126525" elapsed="0.017376"/>
+</kw>
+<arg>kirja2</arg>
+<arg>testi1234</arg>
+<arg>author=Kirjailija2</arg>
+<arg>title=Testi2</arg>
+<arg>year=2026</arg>
+<status status="PASS" start="2025-12-02T22:05:00.126525" elapsed="0.017376"/>
+</kw>
+<kw name="When Käyttäjä Listaa Viitteet" owner="resource">
+<kw name="Käyttäjä Listaa Viitteet Järjestyksessä" owner="resource">
+<kw name="Lajittele Syotteet" owner="RobotLibrary">
+<arg>${järjestys}</arg>
+<arg>poistu</arg>
+<status status="PASS" start="2025-12-02T22:05:00.147943" elapsed="0.000000"/>
+</kw>
+<kw name="Call Listaa Viitteet" owner="RobotLibrary">
+<status status="PASS" start="2025-12-02T22:05:00.147943" elapsed="0.004020"/>
+</kw>
+<arg>avain</arg>
+<status status="PASS" start="2025-12-02T22:05:00.145925" elapsed="0.006038"/>
+</kw>
+<status status="PASS" start="2025-12-02T22:05:00.145925" elapsed="0.006038"/>
+</kw>
+<kw name="Then Käyttäjä Näkee Tulostuksessa" owner="resource">
+<kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
+<msg time="2025-12-02T22:05:00.153974" level="FAIL">Virhe! 
+Tuloste on: 
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; 
+LÄHDEVIITTEET VIITEAVAIMEN MUKAAN
+@kirja{testi123,
+    author = "Kirjailija",
+    title = "Testi",
+    year = "2025"
+}
+
+@kirja2{testi1234,
+    author = "Kirjailija2",
+    title = "Testi2",
+    year = "2026"
+}
+
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; </msg>
+<arg>${teksti}</arg>
+<status status="FAIL" start="2025-12-02T22:05:00.153974" elapsed="0.000000">Virhe! 
+Tuloste on: 
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; 
+LÄHDEVIITTEET VIITEAVAIMEN MUKAAN
+@kirja{testi123,
+    author = "Kirjailija",
+    title = "Testi",
+    year = "2025"
+}
+
+@kirja2{testi1234,
+    author = "Kirjailija2",
+    title = "Testi2",
+    year = "2026"
+}
+
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; </status>
+</kw>
+<arg>lähdeviitteet:</arg>
+<status status="FAIL" start="2025-12-02T22:05:00.151963" elapsed="0.002011">Virhe! 
+Tuloste on: 
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; 
+LÄHDEVIITTEET VIITEAVAIMEN MUKAAN
+@kirja{testi123,
+    author = "Kirjailija",
+    title = "Testi",
+    year = "2025"
+}
+
+@kirja2{testi1234,
+    author = "Kirjailija2",
+    title = "Testi2",
+    year = "2026"
+}
+
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; </status>
+</kw>
+<kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
+<arg>kirja2</arg>
+<status status="NOT RUN" start="2025-12-02T22:05:00.155983" elapsed="0.000000"/>
+</kw>
+<kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
+<arg>Testi</arg>
+<status status="NOT RUN" start="2025-12-02T22:05:00.155983" elapsed="0.000000"/>
+</kw>
+<kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
+<arg>testi1234</arg>
+<status status="NOT RUN" start="2025-12-02T22:05:00.157741" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-12-02T22:05:00.126525" elapsed="0.031216">Virhe! 
+Tuloste on: 
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; 
+LÄHDEVIITTEET VIITEAVAIMEN MUKAAN
+@kirja{testi123,
+    author = "Kirjailija",
+    title = "Testi",
+    year = "2025"
+}
+
+@kirja2{testi1234,
+    author = "Kirjailija2",
+    title = "Testi2",
+    year = "2026"
+}
+
+Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:
+avain (Aakkosjärjestys viitteiden viiteavainten mukaan)
+abc (Aakkosjärjestys teoksen nimen mukaan)
+nimi (Aakkosjärjestys teoksen julkaisija mukaan)
+vuosi (viitteet vanhimmasta uusimpaan)
+poistu (poistu viitteiden listauksesta)
+Anna komento: 
+&gt; </status>
+</test>
+<kw name="Poista Turhat Testitiedostot" owner="resource" type="TEARDOWN">
+<kw name="Poista Testi Tiedosto" owner="RobotLibrary">
+<status status="PASS" start="2025-12-02T22:05:00.163825" elapsed="0.002056"/>
+</kw>
+<status status="PASS" start="2025-12-02T22:05:00.163825" elapsed="0.002056"/>
+</kw>
+<status status="FAIL" start="2025-12-02T22:04:58.463695" elapsed="1.702186"/>
+</suite>
+<status status="FAIL" start="2025-12-02T22:04:56.947805" elapsed="3.220098"/>
+</suite>
+<status status="FAIL" start="2025-12-02T22:04:56.823435" elapsed="3.346423"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Src" id="s1" pass="1" fail="2" skip="0">Src</stat>
+<stat name="Tests" id="s1-s1" pass="1" fail="2" skip="0">Src.Tests</stat>
+<stat name="Lisaa Viite" id="s1-s1-s1" pass="1" fail="0" skip="0">Src.Tests.Lisaa Viite</stat>
+<stat name="Listaa Viitteet" id="s1-s1-s2" pass="0" fail="2" skip="0">Src.Tests.Listaa Viitteet</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

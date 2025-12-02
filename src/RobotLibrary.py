@@ -46,7 +46,7 @@ class RobotLibrary:
 
 
 
-    # Pitää luoda tiedosto, jossa nyt kun tarvitaan syötteet, sillä nyt voidaan lajitella syötteet aakkosjärjestyksessä
+    # Pitää luoda tiedosto, jossa nyt kun tarvitaan syötteet, sillä nyt voidaan lajitella syötteet aakkosjärjestyksessä ja vanhimmasta uusimpaan.
     def lajittele_syotteet(self, *syotteet):
         if not self.io:
             self.luo_testi_io()

@@ -25,9 +25,14 @@ Käyttäjä Lisää Viitteen
     Lisaa Viite Bib Tiedostoon     ${tyyppi}    ${viiteavain}    &{kentät}
 
 
-Käyttäjä Listaa Viitteet
+Käyttäjä Listaa Viitteet Järjestyksessä
+    [Arguments]    ${järjestys}
+    Lajittele Syotteet    ${järjestys}  poistu
     Call Listaa Viitteet
 
+
+Käyttäjä Listaa Viitteet
+    Käyttäjä Listaa Viitteet Järjestyksessä  avain
 
 Käyttäjä Näkee Tulostuksessa
     [Arguments]    ${teksti}
