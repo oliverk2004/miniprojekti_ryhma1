@@ -1,9 +1,11 @@
 from .konsoli_IO import KonsoliIO
 from .bibtex_funktiot import lataa_bibtex_tiedosto, parsi_bibtex, yrita_lukemista_pythonilla
+from collections import OrderedDict
+from pybtex.database import BibliographyData
 
 def listaa_viitteet(bib_tiedosto, konsoli: KonsoliIO):
     bib_data = lataa_bibtex_tiedosto(bib_tiedosto)
-    
+
     if bib_data is None:
         # Tiedostoa ei löydy tai se on virheellinen
         yrita_lukemista_pythonilla(bib_tiedosto, konsoli)
@@ -13,6 +15,97 @@ def listaa_viitteet(bib_tiedosto, konsoli: KonsoliIO):
         konsoli.kirjoita("Ei lähdeviitteitä.\n")
         return
     
-    bibtex_str = parsi_bibtex(bib_data)
+    while True:
+        konsoli.kirjoita("Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:")
+        konsoli.kirjoita("avain (Aakkosjärjestys viitteiden viiteavainten mukaan)")
+        konsoli.kirjoita("abc (Aakkosjärjestys teoksen nimen mukaan)")
+        konsoli.kirjoita("nimi (Aakkosjärjestys teoksen julkaisija mukaan)")
+        konsoli.kirjoita("vuosi (viitteet uusimmasta vanhimpaan)")
+        konsoli.kirjoita("poistu (poistu viitteiden listauksesta)")
+
+        varmistus = konsoli.lue("Anna komento: \n> ")
+
+        if varmistus.lower() == "avain":
+            konsoli.kirjoita("LÄHDEVIITTEET VIITEAVAIMEN MUKAAN")
+            data_tulostukseen = lajittele_kaikki_mukaan(bib_data, 'avain')
+        elif varmistus.lower() == "abc":
+            konsoli.kirjoita("LÄHDEVIITTEET TEOKSEN NIMEN MUKAAN")
+            data_tulostukseen = lajittele_kaikki_mukaan(bib_data, 'abc')
+        elif varmistus.lower() == "nimi":
+            konsoli.kirjoita("LÄHDEVIITTEET KIRJOITTAJAN NIMEN MUKAAN")
+            data_tulostukseen = lajittele_kaikki_mukaan(bib_data, 'nimi')
+        elif varmistus.lower() == "vuosi":
+            konsoli.kirjoita("LÄHDEVIITTEET JULKAISUVUODEN MUKAAN")
+            data_tulostukseen = lajittele_kaikki_mukaan(bib_data, 'vuosi')
+        elif varmistus.lower() == "poistu":
+            break
+        else:
+            konsoli.kirjoita("Tuntematon komento. Kirjoita avain, abc, nimi, vuosi tai poistu")
+            continue
+        bibtex_str = parsi_bibtex(data_tulostukseen)    
+        konsoli.kirjoita(bibtex_str)
+
+# Funktio, joka määrittää minkä kriteerin mukaan viitteet lajitellaan.
+def lajittele_kaikki_mukaan(bib_data: BibliographyData, kentta: str) -> BibliographyData:    
+    # Valitaan oikea lajittelukriteeri
+    if kentta == 'nimi':
+        # Viitteen julkaisijan nimen perusteella tehtävä lajittelu on monimutkaisempi ja käyttää omaa alifunktiotaan.
+        lajittelu_key = hanki_nimien_lajitteluarvo
+        
+    # Lajittelu viitteen avaimen mukaan
+    elif kentta == 'avain':
+        lajittelu_key = lambda item: item[0].lower()
+    # Lajittelu viitteen teoksen nimen mukaan    
+    elif kentta == 'abc':
+        lajittelu_key = lambda item: item[1].fields.get('title', '~').lower()
+    # Lajittelu viitteen julkaisuvuoden mukaan    
+    elif kentta == 'vuosi':
+        lajittelu_key = lambda item: int(item[1].fields.get('year', 0))        
+    else:
+        # Palautetaan alkuperäinen data, jos kenttä on tuntematon
+        return bib_data 
+
+    jarjestetyt_itemit = sorted(
+        bib_data.entries.items(),
+        key=lajittelu_key
+    )
     
-    konsoli.kirjoita(f"lähdeviitteet:\n{bibtex_str}")
+    jarjestetty_sanasto = OrderedDict(jarjestetyt_itemit)
+    return BibliographyData(jarjestetty_sanasto)
+
+
+# Funktio, joka hakee viitteen julkaisijan nimet
+def hanki_nimien_lajitteluarvo(item):
+    entry = item[1]
+    sukunimi_raw = ""
+    etunimi_raw = ""
+
+    kentat_jarjestyksessa = ['author', 'editor']
+
+    for kentan_nimi in kentat_jarjestyksessa:
+        if kentan_nimi in entry.persons and entry.persons[kentan_nimi]:
+            ensimmainen_henkilo = entry.persons[kentan_nimi][0]
+
+            if ensimmainen_henkilo.last_names:
+                # Ensisijainen avain: Sukunimi
+                sukunimi_raw = ensimmainen_henkilo.last_names[0]
+                
+                # Toissijainen avain: Etunimi
+                if ensimmainen_henkilo.first_names:
+                    # Yhdistetään kaikki etunimet/osat
+                    etunimi_raw = " ".join(ensimmainen_henkilo.first_names)
+
+                break
+
+    # Muunnetaan molemmat avaimet pieniksi kirjaimiksi
+    # Jos sukunimi puuttuu, käytetään "~"
+    if sukunimi_raw == "" or sukunimi_raw.isspace():
+        sukunimi_key = "~"
+    else:
+        sukunimi_key = sukunimi_raw.lower()
+    
+    # Jos etunimi puuttuu, käytetään tyhjää merkkijonoa, jotta se tulee ensimmäisenä (tyhjä ennen 'a'-kirjainta).
+    etunimi_key = etunimi_raw.lower() if etunimi_raw else "" 
+    
+    # palautetaan monikko: sukunimi ja etunimi
+    return (sukunimi_key, etunimi_key)
