@@ -21,7 +21,7 @@ def listaa_viitteet(bib_tiedosto, konsoli: KonsoliIO):
         konsoli.kirjoita("avain (Aakkosjärjestys viitteiden viiteavainten mukaan)")
         konsoli.kirjoita("abc (Aakkosjärjestys teoksen nimen mukaan)")
         konsoli.kirjoita("nimi (Aakkosjärjestys teoksen julkaisija mukaan)")
-        konsoli.kirjoita("vuosi (viitteet uusimmasta vanhimpaan)")
+        konsoli.kirjoita("vuosi (viitteet vanhimmasta uusimpaan)")
         konsoli.kirjoita("poistu (poistu viitteiden listauksesta)")
 
         varmistus = konsoli.lue("Anna komento: \n> ")
@@ -62,7 +62,8 @@ def jarjesta_komennon_mukaan(bib_data: BibliographyData, kentta: str) -> Bibliog
         lajittelu_key = lambda item: item[1].fields.get('title', '~').lower()
     # Lajittelu viitteen julkaisuvuoden mukaan    
     elif kentta == 'vuosi':
-        lajittelu_key = lambda item: int(item[1].fields.get('year', 0))        
+        # lajittelu_key = lambda item: int(item[1].fields.get('year', 0))   
+        lajittelu_key = hanki_vuosi_lajitteluarvo_vanhin_ensin     
     else:
         # Palautetaan alkuperäinen data, jos kenttä on tuntematon
         return bib_data 
@@ -83,15 +84,21 @@ def hanki_nimien_lajitteluarvo(item):
 
     kentat_jarjestyksessa = ['author', 'editor']
 
+    # tarkastellaan author kenttä. Jos authoria ei ole, tarkastellaan editor kentän sisältöä.
     for kentan_nimi in kentat_jarjestyksessa:
+        # Tarkastetaan onko avain olemassa ja onko sillä sisältöä.
         if kentan_nimi in entry.persons and entry.persons[kentan_nimi]:
-            ensimmainen_henkilo = entry.persons[kentan_nimi][0]
 
-            if ensimmainen_henkilo.last_names:
-                sukunimi_raw = ensimmainen_henkilo.last_names[0]
-                
-            if ensimmainen_henkilo.first_names:
-                etunimi_raw = " ".join(ensimmainen_henkilo.first_names)
+            # Poimitaan listasta henkilö, jonka nimeä käytetään lajitteluun
+            lajittelu_henkilo = entry.persons[kentan_nimi][0]
+            # Last_names on pybtex-objektin lista sukunimistä.
+            if lajittelu_henkilo.last_names:
+                # Otetaan listan ensimmäinen sukunimi talteen lajittelua varten.
+                sukunimi_raw = lajittelu_henkilo.last_names[0]
+            # First_names on lista etunimistä
+            if lajittelu_henkilo.first_names:
+                # Etunimet yhdistetään yhdeksi merkkijonoksi välilyönnillä
+                etunimi_raw = " ".join(lajittelu_henkilo.first_names)
 
             break
 
@@ -115,3 +122,16 @@ def hanki_nimien_lajitteluarvo(item):
         etunimi_key = ""
 
     return (sukunimi_key, etunimi_key)
+
+# Vuosi lajittelun apufunktio.
+def hanki_vuosi_lajitteluarvo_vanhin_ensin(item):
+    # hae bibtex kentästä "year" arvo
+    vuosi_str = item[1].fields.get('year')
+    
+    # Tarkistetaan, että arvo on olemassa JA on numero
+    if vuosi_str and isinstance(vuosi_str, str) and vuosi_str.isdigit():
+        # Vanhin ensin. Menee tulostettavan listan alkuun. Palautuu tuple (0, pienin vuosi).
+        return (0, int(vuosi_str))
+    
+    # Vuosi puuttuu tai on virheellinen. Menee tulostettavan listan loppuun. Palautuu tuple (1, 0).
+    return (1, 0)

@@ -146,10 +146,10 @@ def test_listaa_viitteet_lajittelee_vuoden_mukaan_vanhimmasta_uusimpaan(tmp_path
     tiedosto = tmp_path / "test_vuosi.bib"
     
     # Esimerkki viitteiden luonti ja kirjoitus tiedostoon
-    viite_b = "@inproceedings{viiteB, author={Author C}, title={Title C}, year={566}}"
-    viite_a = "@misc{viiteA, author={Author D}, title={Title D}}" # Vuosi puuttuu. Tulostuu ensimmäisenä.
-    viite_d = "@article{viiteD, author={Author B}, title={Title B}, year={9000}}"
-    viite_c = "@book{viiteC, author={Author A}, title={Title A}, year={1000}}"
+    viite_a = "@inproceedings{viiteA, author={Author C}, title={Title C}, year={566}}"
+    viite_d = "@misc{viiteD, author={Author D}, title={Title D}}" # Vuosi puuttuu. Tulostuu viimeisenä.
+    viite_c = "@article{viiteC, author={Author B}, title={Title B}, year={9000}}"
+    viite_b = "@book{viiteB, author={Author A}, title={Title A}, year={1000}}"
     # Kirjoitetaan tiedostoon B, A, D, C järjestyksessä
     bibtex_data = f"{viite_b}\n{viite_a}\n{viite_d}\n{viite_c}"    
     tiedosto.write_text(bibtex_data, encoding="utf-8")
