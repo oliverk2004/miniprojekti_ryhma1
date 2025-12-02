@@ -15,6 +15,7 @@ def listaa_viitteet(bib_tiedosto, konsoli: KonsoliIO):
         konsoli.kirjoita("Ei lähdeviitteitä.\n")
         return
     
+    # Käyttäjän UI. Loopissa voi pyytää eri listaus tapoja viitteille.
     while True:
         konsoli.kirjoita("Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:")
         konsoli.kirjoita("avain (Aakkosjärjestys viitteiden viiteavainten mukaan)")
@@ -27,26 +28,27 @@ def listaa_viitteet(bib_tiedosto, konsoli: KonsoliIO):
 
         if varmistus.lower() == "avain":
             konsoli.kirjoita("LÄHDEVIITTEET VIITEAVAIMEN MUKAAN")
-            data_tulostukseen = lajittele_kaikki_mukaan(bib_data, 'avain')
+            data_tulostukseen = jarjesta_komennon_mukaan(bib_data, 'avain')
         elif varmistus.lower() == "abc":
             konsoli.kirjoita("LÄHDEVIITTEET TEOKSEN NIMEN MUKAAN")
-            data_tulostukseen = lajittele_kaikki_mukaan(bib_data, 'abc')
+            data_tulostukseen = jarjesta_komennon_mukaan(bib_data, 'abc')
         elif varmistus.lower() == "nimi":
             konsoli.kirjoita("LÄHDEVIITTEET KIRJOITTAJAN NIMEN MUKAAN")
-            data_tulostukseen = lajittele_kaikki_mukaan(bib_data, 'nimi')
+            data_tulostukseen = jarjesta_komennon_mukaan(bib_data, 'nimi')
         elif varmistus.lower() == "vuosi":
             konsoli.kirjoita("LÄHDEVIITTEET JULKAISUVUODEN MUKAAN")
-            data_tulostukseen = lajittele_kaikki_mukaan(bib_data, 'vuosi')
+            data_tulostukseen = jarjesta_komennon_mukaan(bib_data, 'vuosi')
         elif varmistus.lower() == "poistu":
             break
         else:
             konsoli.kirjoita("Tuntematon komento. Kirjoita avain, abc, nimi, vuosi tai poistu")
             continue
+        # Viitteiden tulostus käyttäjän haluaman järjestyksen perusteella.
         bibtex_str = parsi_bibtex(data_tulostukseen)    
         konsoli.kirjoita(bibtex_str)
 
 # Funktio, joka määrittää minkä kriteerin mukaan viitteet lajitellaan.
-def lajittele_kaikki_mukaan(bib_data: BibliographyData, kentta: str) -> BibliographyData:    
+def jarjesta_komennon_mukaan(bib_data: BibliographyData, kentta: str) -> BibliographyData:    
     # Valitaan oikea lajittelukriteeri
     if kentta == 'nimi':
         # Viitteen julkaisijan nimen perusteella tehtävä lajittelu on monimutkaisempi ja käyttää omaa alifunktiotaan.
@@ -73,7 +75,6 @@ def lajittele_kaikki_mukaan(bib_data: BibliographyData, kentta: str) -> Bibliogr
     jarjestetty_sanasto = OrderedDict(jarjestetyt_itemit)
     return BibliographyData(jarjestetty_sanasto)
 
-
 # Funktio, joka hakee viitteen julkaisijan nimet
 def hanki_nimien_lajitteluarvo(item):
     entry = item[1]
@@ -87,25 +88,30 @@ def hanki_nimien_lajitteluarvo(item):
             ensimmainen_henkilo = entry.persons[kentan_nimi][0]
 
             if ensimmainen_henkilo.last_names:
-                # Ensisijainen avain: Sukunimi
                 sukunimi_raw = ensimmainen_henkilo.last_names[0]
                 
-                # Toissijainen avain: Etunimi
-                if ensimmainen_henkilo.first_names:
-                    # Yhdistetään kaikki etunimet/osat
-                    etunimi_raw = " ".join(ensimmainen_henkilo.first_names)
+            if ensimmainen_henkilo.first_names:
+                etunimi_raw = " ".join(ensimmainen_henkilo.first_names)
 
-                break
+            break
 
-    # Muunnetaan molemmat avaimet pieniksi kirjaimiksi
-    # Jos sukunimi puuttuu, käytetään "~"
-    if sukunimi_raw == "" or sukunimi_raw.isspace():
-        sukunimi_key = "~"
-    else:
+    # Määritetään ensisijainen avain sukunimen perusteella
+    if sukunimi_raw and not sukunimi_raw.isspace():
+        # Jos sukunimi löytyy
         sukunimi_key = sukunimi_raw.lower()
-    
-    # Jos etunimi puuttuu, käytetään tyhjää merkkijonoa, jotta se tulee ensimmäisenä (tyhjä ennen 'a'-kirjainta).
-    etunimi_key = etunimi_raw.lower() if etunimi_raw else "" 
-    
-    # palautetaan monikko: sukunimi ja etunimi
+    elif etunimi_raw:
+        # Sukunimi puuttuu, mutta etunimi löytyy
+        # Tyhjän sukunimen arvoksi asetetaan aakkosjärjestyksessä '{'. Tulee ennen '~' merkkiä mutta ennen kaikkia kirjamia.
+        sukunimi_key = "{" 
+    else:
+        # Author on kokonaan tyhjä. Ei etu eikä sukunimeä.
+        # Käytetään merkkiä '~', joka on ASCII aakkosten viimeinen.
+        sukunimi_key = "~"
+
+    # Määritetään toissijaiseksi avaimeksi etunimi
+    if etunimi_raw:
+        etunimi_key = etunimi_raw.lower()
+    else:
+        etunimi_key = ""
+
     return (sukunimi_key, etunimi_key)
