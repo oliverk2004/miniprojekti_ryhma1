@@ -30,5 +30,3 @@ As A User I Want To See All My References
     And Käyttäjä Näkee Tulostuksessa  kirja2
     And Käyttäjä Näkee Tulostuksessa  Testi
     And Käyttäjä Näkee Tulostuksessa  testi1234
-    
-

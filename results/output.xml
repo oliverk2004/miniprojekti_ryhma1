@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.10.11 on win32)" generated="2025-12-02T21:12:54.380464" rpa="false" schemaversion="5">
+<suite id="s1" name="Miniprojekti Ryhma1" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1">
+<suite id="s1-s1" name="Src" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src">
+<suite id="s1-s1-s1" name="Tests" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src\tests">
+<suite id="s1-s1-s1-s1" name="Lisaa Viite" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src\tests\lisaa_viite.robot">
+<kw name="Testausympäristö Asetettu" owner="resource" type="SETUP">
+<kw name="Luo Testi Io" owner="RobotLibrary">
+<status status="PASS" start="2025-12-02T21:12:54.863515" elapsed="0.002155"/>
+</kw>
+<kw name="Aseta Testi Tiedosto" owner="RobotLibrary">
+<arg>${TEST_BIB_FILE}</arg>
+<status status="PASS" start="2025-12-02T21:12:54.866275" elapsed="0.002385"/>
+</kw>
+<status status="PASS" start="2025-12-02T21:12:54.859461" elapsed="0.009791"/>
+</kw>
+<test id="s1-s1-s1-s1-t1" name="As A User I Want To Add References" line="9">
+<kw name="Aseta Testi Tiedosto" owner="RobotLibrary">
+<arg>${TEST_BIB_FILE}</arg>
+<status status="PASS" start="2025-12-02T21:12:54.908836" elapsed="0.003083"/>
+</kw>
+<kw name="Given Käyttäjä Lisää Viitteen" owner="resource">
+<kw name="Lisaa Viite Bib Tiedostoon" owner="RobotLibrary">
+<arg>${tyyppi}</arg>
+<arg>${viiteavain}</arg>
+<arg>&amp;{kentät}</arg>
+<status status="PASS" start="2025-12-02T21:12:54.922015" elapsed="1.422660"/>
+</kw>
+<arg>lisäys</arg>
+<arg>lisätään123</arg>
+<arg>author=Lisääjä</arg>
+<arg>title=Lisäys</arg>
+<arg>title=1234</arg>
+<status status="PASS" start="2025-12-02T21:12:54.913740" elapsed="1.430935"/>
+</kw>
+<kw name="When Käyttäjä Listaa Viitteet" owner="resource">
+<kw name="Call Listaa Viitteet" owner="RobotLibrary">
+<status status="PASS" start="2025-12-02T21:12:56.350758" elapsed="0.002021"/>
+</kw>
+<status status="PASS" start="2025-12-02T21:12:56.346702" elapsed="0.006077"/>
+</kw>
+<kw name="Then Käyttäjä Näkee Tulostuksessa" owner="resource">
+<kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
+<msg time="2025-12-02T21:12:56.362504" level="FAIL">Virhe! 
+Tuloste on: 
+Virhe: BibTeX-tiedosto on virheellinen tai tyhjä.
+</msg>
+<arg>${teksti}</arg>
+<status status="FAIL" start="2025-12-02T21:12:56.358501" elapsed="0.032534">Virhe! 
+Tuloste on: 
+Virhe: BibTeX-tiedosto on virheellinen tai tyhjä.
+</status>
+</kw>
+<arg>lähdeviitteet:</arg>
+<status status="FAIL" start="2025-12-02T21:12:56.354798" elapsed="0.038312">Virhe! 
+Tuloste on: 
+Virhe: BibTeX-tiedosto on virheellinen tai tyhjä.
+</status>
+</kw>
+<kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
+<arg>lisäys</arg>
+<status status="NOT RUN" start="2025-12-02T21:12:56.399960" elapsed="0.000000"/>
+</kw>
+<kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
+<arg>lisätään123</arg>
+<status status="NOT RUN" start="2025-12-02T21:12:56.399960" elapsed="0.000000"/>
+</kw>
+<kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
+<arg>Lisääjä</arg>
+<status status="NOT RUN" start="2025-12-02T21:12:56.423184" elapsed="0.011576"/>
+</kw>
+<kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
+<arg>Lisäys</arg>
+<status status="NOT RUN" start="2025-12-02T21:12:56.438750" elapsed="0.000000"/>
+</kw>
+<kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
+<arg>1234</arg>
+<status status="NOT RUN" start="2025-12-02T21:12:56.452749" elapsed="0.004983"/>
+</kw>
+<status status="FAIL" start="2025-12-02T21:12:54.869824" elapsed="1.591782">Virhe! 
+Tuloste on: 
+Virhe: BibTeX-tiedosto on virheellinen tai tyhjä.
+</status>
+</test>
+<kw name="Poista Turhat Testitiedostot" owner="resource" type="TEARDOWN">
+<kw name="Poista Testi Tiedosto" owner="RobotLibrary">
+<status status="PASS" start="2025-12-02T21:12:56.556949" elapsed="0.004642"/>
+</kw>
+<status status="PASS" start="2025-12-02T21:12:56.556949" elapsed="0.005970"/>
+</kw>
+<status status="FAIL" start="2025-12-02T21:12:54.678978" elapsed="1.885180"/>
+</suite>
+<status status="FAIL" start="2025-12-02T21:12:54.626960" elapsed="1.959850"/>
+</suite>
+<status status="FAIL" start="2025-12-02T21:12:54.562458" elapsed="2.075268"/>
+</suite>
+<status status="FAIL" start="2025-12-02T21:12:54.412728" elapsed="2.312173"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Miniprojekti Ryhma1" id="s1" pass="0" fail="1" skip="0">Miniprojekti Ryhma1</stat>
+<stat name="Src" id="s1-s1" pass="0" fail="1" skip="0">Miniprojekti Ryhma1.Src</stat>
+<stat name="Tests" id="s1-s1-s1" pass="0" fail="1" skip="0">Miniprojekti Ryhma1.Src.Tests</stat>
+<stat name="Lisaa Viite" id="s1-s1-s1-s1" pass="0" fail="1" skip="0">Miniprojekti Ryhma1.Src.Tests.Lisaa Viite</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

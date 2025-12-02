@@ -45,6 +45,14 @@ class RobotLibrary:
         return f"Viite lisätty {viiteavain}"
 
 
+
+    # Pitää luoda tiedosto, jossa nyt kun tarvitaan syötteet, sillä nyt voidaan lajitella syötteet aakkosjärjestyksessä
+    def lajittele_syotteet(self, *syotteet):
+        if not self.io:
+            self.luo_testi_io()
+        self.io.input = list(syotteet)
+
+
     # Metodi, jolla käyttäjälle listataan viitteet
     def call_listaa_viitteet(self):
         if not self.io:     # Jos ei olisi jostain syystä luotu vielä
