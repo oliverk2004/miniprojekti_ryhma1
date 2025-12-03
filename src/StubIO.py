@@ -9,8 +9,5 @@ class StubIO:
             return self.input.pop(0)
         return ""
 
-
     def kirjoita(self, teksti):
         return self.output.append(teksti)
-    
-    

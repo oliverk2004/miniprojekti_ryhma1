@@ -1,23 +1,18 @@
-from .konsoli_IO import KonsoliIO
-from .bibtex_funktiot import lataa_bibtex_tiedosto, parsi_bibtex, yrita_lukemista_pythonilla
 from collections import OrderedDict
 from pybtex.database import BibliographyData
+from .konsoli_IO import KonsoliIO
+from .bibtex_funktiot import lataa_bibtex_tiedosto, parsi_bibtex, onko_olemassa
 
 def listaa_viitteet(bib_tiedosto, konsoli: KonsoliIO):
     bib_data = lataa_bibtex_tiedosto(bib_tiedosto)
 
-    if bib_data is None:
-        # Tiedostoa ei löydy tai se on virheellinen
-        yrita_lukemista_pythonilla(bib_tiedosto, konsoli)
+    if not onko_olemassa(bib_tiedosto, bib_data, konsoli):
         return
-    
-    if len(bib_data.entries) == 0:
-        konsoli.kirjoita("Ei lähdeviitteitä.\n")
-        return
-    
+
     # Käyttäjän UI. Loopissa voi pyytää eri listaus tapoja viitteille.
     while True:
-        konsoli.kirjoita("Käytä seuraavia komentoja viitteiden listaamiseen valitsemasi kriteerin perusteella:")
+        konsoli.kirjoita("Käytä seuraavia komentoja viitteiden " \
+        "listaamiseen valitsemasi kriteerin perusteella:")
         konsoli.kirjoita("avain (Aakkosjärjestys viitteiden viiteavainten mukaan)")
         konsoli.kirjoita("abc (Aakkosjärjestys teoksen nimen mukaan)")
         konsoli.kirjoita("nimi (Aakkosjärjestys teoksen julkaisija mukaan)")
@@ -44,35 +39,36 @@ def listaa_viitteet(bib_tiedosto, konsoli: KonsoliIO):
             konsoli.kirjoita("Tuntematon komento. Kirjoita avain, abc, nimi, vuosi tai poistu")
             continue
         # Viitteiden tulostus käyttäjän haluaman järjestyksen perusteella.
-        bibtex_str = parsi_bibtex(data_tulostukseen)    
+        bibtex_str = parsi_bibtex(data_tulostukseen)
         konsoli.kirjoita(bibtex_str)
 
 # Funktio, joka määrittää minkä kriteerin mukaan viitteet lajitellaan.
-def jarjesta_komennon_mukaan(bib_data: BibliographyData, kentta: str) -> BibliographyData:    
+def jarjesta_komennon_mukaan(bib_data: BibliographyData, kentta: str) -> BibliographyData:
     # Valitaan oikea lajittelukriteeri
     if kentta == 'nimi':
-        # Viitteen julkaisijan nimen perusteella tehtävä lajittelu on monimutkaisempi ja käyttää omaa alifunktiotaan.
+        # Viitteen julkaisijan nimen perusteella tehtävä lajittelu on
+        # monimutkaisempi ja käyttää omaa alifunktiotaan.
         lajittelu_key = hanki_nimien_lajitteluarvo
-        
+
     # Lajittelu viitteen avaimen mukaan
     elif kentta == 'avain':
         lajittelu_key = lambda item: item[0].lower()
-    # Lajittelu viitteen teoksen nimen mukaan    
+    # Lajittelu viitteen teoksen nimen mukaan
     elif kentta == 'abc':
         lajittelu_key = lambda item: item[1].fields.get('title', '~').lower()
-    # Lajittelu viitteen julkaisuvuoden mukaan    
+    # Lajittelu viitteen julkaisuvuoden mukaan
     elif kentta == 'vuosi':
-        # lajittelu_key = lambda item: int(item[1].fields.get('year', 0))   
-        lajittelu_key = hanki_vuosi_lajitteluarvo_vanhin_ensin     
+        # lajittelu_key = lambda item: int(item[1].fields.get('year', 0))
+        lajittelu_key = hanki_vuosi_lajitteluarvo_vanhin_ensin
     else:
         # Palautetaan alkuperäinen data, jos kenttä on tuntematon
-        return bib_data 
+        return bib_data
 
     jarjestetyt_itemit = sorted(
         bib_data.entries.items(),
         key=lajittelu_key
     )
-    
+
     jarjestetty_sanasto = OrderedDict(jarjestetyt_itemit)
     return BibliographyData(jarjestetty_sanasto)
 
@@ -108,8 +104,9 @@ def hanki_nimien_lajitteluarvo(item):
         sukunimi_key = sukunimi_raw.lower()
     elif etunimi_raw:
         # Sukunimi puuttuu, mutta etunimi löytyy
-        # Tyhjän sukunimen arvoksi asetetaan aakkosjärjestyksessä '{'. Tulee ennen '~' merkkiä mutta ennen kaikkia kirjamia.
-        sukunimi_key = "{" 
+        # Tyhjän sukunimen arvoksi asetetaan aakkosjärjestyksessä '{'. Tulee ennen '~'
+        # merkkiä mutta ennen kaikkia kirjamia.
+        sukunimi_key = "{"
     else:
         # Author on kokonaan tyhjä. Ei etu eikä sukunimeä.
         # Käytetään merkkiä '~', joka on ASCII aakkosten viimeinen.
@@ -127,11 +124,11 @@ def hanki_nimien_lajitteluarvo(item):
 def hanki_vuosi_lajitteluarvo_vanhin_ensin(item):
     # hae bibtex kentästä "year" arvo
     vuosi_str = item[1].fields.get('year')
-    
+
     # Tarkistetaan, että arvo on olemassa JA on numero
     if vuosi_str and isinstance(vuosi_str, str) and vuosi_str.isdigit():
         # Vanhin ensin. Menee tulostettavan listan alkuun. Palautuu tuple (0, pienin vuosi).
         return (0, int(vuosi_str))
-    
+
     # Vuosi puuttuu tai on virheellinen. Menee tulostettavan listan loppuun. Palautuu tuple (1, 0).
     return (1, 0)

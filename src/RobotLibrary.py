@@ -14,24 +14,20 @@ class RobotLibrary:
         self.io = None
         self.test_bib_file = None
 
-    
     def luo_testi_io(self):
         #Luodaan StubIO testausta varten.
         self.io = StubIO()
         return "IO luotu"
-    
 
     def aseta_testi_tiedosto(self, tiedosto):
         self.test_bib_file = tiedosto
         return f"Testitiedosto luotu: {tiedosto}"
-    
 
     def luo_tyhja_bib_tiedosto(self, tiedosto):
         # Luodaan tyhjä .bib-tiedosto
         bib_data = BibliographyData()
         tallenna(self.test_bib_file, bib_data)
         return f"Tiedosto luotu."
-    
 
     def lisaa_viite_bib_tiedostoon(self, tyyppi, viiteavain, **kentät):
         bib_data = lataa_bibtex_tiedosto(self.test_bib_file)
@@ -44,14 +40,12 @@ class RobotLibrary:
 
         return f"Viite lisätty {viiteavain}"
 
-
-
-    # Pitää luoda tiedosto, jossa nyt kun tarvitaan syötteet, sillä nyt voidaan lajitella syötteet aakkosjärjestyksessä ja vanhimmasta uusimpaan.
+    # Pitää luoda tiedosto, jossa nyt kun tarvitaan syötteet, sillä nyt voidaan lajitella syötteet 
+    # aakkosjärjestyksessä ja vanhimmasta uusimpaan.
     def lajittele_syotteet(self, *syotteet):
         if not self.io:
             self.luo_testi_io()
         self.io.input = list(syotteet)
-
 
     # Metodi, jolla käyttäjälle listataan viitteet
     def call_listaa_viitteet(self):
@@ -59,7 +53,6 @@ class RobotLibrary:
             self.luo_testi_io()
         listaa_viitteet(self.test_bib_file, self.io)
         return "Viitteet listattu"
-    
 
     # Pitää luoda jokin metodi, jolla saadaan poistettua testitiedosto aina, jotta ei ole montaa testitiedostoa
     def poista_testi_tiedosto(self):
@@ -67,7 +60,6 @@ class RobotLibrary:
             os.remove(self.test_bib_file)
             return f"Tiedosto poistettu."
         return "Ei tiedostoa mitä poistaa"
-    
 
     # Tarvitaan jokin metodi, jolla pystytään varmistamaan, että output sisältää halutun tekstin roboteissa
     def tuloste_pitaisi_olla(self, teksti):

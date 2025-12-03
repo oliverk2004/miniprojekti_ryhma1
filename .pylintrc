@@ -1,0 +1,25 @@
+[MASTER]
+
+init-hook='import sys; sys.path.append("src")'
+ignore=tests,RobotLibrary.py,konsoli_IO.py,StubIO.py
+
+[MESSAGE CONTROL]
+
+disable=raw-checker-failed,
+        bad-inline-option,
+        locally-disabled,
+        file-ignored,
+        suppressed-message,
+        useless-suppression,
+        deprecated-pragma,
+        use-symbolic-message-instead,
+        missing-module-docstring,
+        missing-function-docstring,
+        missing-class-docstring,
+        unnecessary-lambda-assignment
+
+[FORMAT]
+
+[REFACTORING]
+
+[DESIGN]
