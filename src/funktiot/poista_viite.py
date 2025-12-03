@@ -23,7 +23,7 @@ def poista_viite(bib_tiedosto, konsoli: KonsoliIO):
 def selvita_poistettava_viite(bibtex_str, konsoli, bib_data):
     while True:
         konsoli.kirjoita(f"\nLähdeviitteet:{bibtex_str}")
-        syote = konsoli.lue("\nSyötä poistettavan lähteen viiteavain (peru) \n> ").strip().lower()
+        syote = konsoli.lue("\nSyötä poistettavan lähteen viiteavain (peru) \n> ").strip()
 
         if syote == "peru":
             konsoli.kirjoita("Peruutaan poistaminen\n")
