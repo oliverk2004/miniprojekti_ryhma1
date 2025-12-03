@@ -26,7 +26,7 @@ def selvita_poistettava_viite(bibtex_str, konsoli, bib_data):
         syote = konsoli.lue("\nSyötä poistettavan lähteen viiteavain (peru) \n> ").strip()
 
         if syote == "peru":
-            konsoli.kirjoita("Peruutaan poistaminen\n")
+            konsoli.kirjoita("Perutaan poistaminen\n")
             return None
         if syote in bib_data.entries:
             return syote

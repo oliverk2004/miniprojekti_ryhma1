@@ -142,6 +142,24 @@ def test_poista_viite(tmp_path):
         assert "viiteavain" not in data
         assert "Otsikko" not in data
 
+
+def test_poista_viite_peruminen(tmp_path):
+    tiedosto = tmp_path / "test.bib"
+    tiedosto.write_text("@book{viiteavain, author={Ankka, Aku}, title={Otsikko}, year={2025}}", 
+                        encoding="utf-8")
+
+    io = StubIO()
+    io.input = [
+        "viiteavain", 
+        "Ei"     # vahvistus, että perutaan
+    ]
+
+    poista_viite(tiedosto, io)
+
+    assert any ("Perutaan" in r for r in io.output)
+
+
+
 def test_listaa_viitteet_lajittelee_vuoden_mukaan_vanhimmasta_uusimpaan(tmp_path):
     tiedosto = tmp_path / "test_vuosi.bib"
     
