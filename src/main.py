@@ -1,6 +1,7 @@
 import os
 from funktiot.lisaa_viite import lisaa_viite
 from funktiot.listaa_viitteet import listaa_viitteet
+from funktiot.yksittainen_viite import listaa_yksittainen_viite
 from funktiot.poista_viite import poista_viite
 from funktiot.konsoli_IO import KonsoliIO
 
@@ -13,7 +14,7 @@ def main():
     io = KonsoliIO()
     io.kirjoita("\nTervetuloa lähdeviite työkaluun!")
     while True:
-        io.kirjoita("Haluatko lisätä lähdeviitteen, listata lähdeviitteesi, " +
+        io.kirjoita("Haluatko lisätä lähdeviitteen, listata lähdeviitteesi, yksittäinen viite " +
                     "poistaa lähdeviitteen vai lopettaa?")
 
         valitse = io.lue("> ").strip().lower()
@@ -23,6 +24,9 @@ def main():
             continue
         if valitse == "listaa":
             listaa_viitteet(BIBFILE, io)
+            continue
+        if valitse == "yksittäinen":
+            listaa_yksittainen_viite(BIBFILE, io)
             continue
         if valitse == "poista":
             poista_viite(BIBFILE, io)
