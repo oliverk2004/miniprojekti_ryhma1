@@ -28,3 +28,5 @@ max-line-length=100
 [REFACTORING]
 
 [DESIGN]
+# Maksimissaan 5 argumenttia funktioihin ja metodeihin.
+max-args=5
