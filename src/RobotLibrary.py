@@ -30,7 +30,7 @@ class RobotLibrary:
         tallenna(self.test_bib_file, bib_data)
         return f"Tiedosto luotu."
 
-    def lisaa_viite_bib_tiedostoon(self, tyyppi, viiteavain, **kentät):
+    def lisaa_viite_bib_tiedostoon(self, tyyppi, viiteavain, **kentät): # TODO: Tämä pitäisi päivittää nykyiseen muotoon...
         bib_data = lataa_bibtex_tiedosto(self.test_bib_file)
         if bib_data is None: # Jos viitteitä ei vielä ole
             bib_data = BibliographyData()
@@ -55,6 +55,16 @@ class RobotLibrary:
         listaa_viitteet(self.test_bib_file, self.io)
         return "Viitteet listattu"
     
+
+    def call_lisaa_viite(self):
+        if not self.io:     # Jos ei olisi jostain syystä luotu vielä
+            self.luo_testi_io()
+        if not self.test_bib_file:
+            raise ValueError("Testitiedostoa ei ole asetettu.")
+        
+        lisaa_viite(self.test_bib_file, self.io)
+        return "Lisää viite suoritettu"
+
 
     def call_poista_viitteet(self):
         poista_viite(self.test_bib_file, self.io)
