@@ -22,6 +22,9 @@ disable=raw-checker-failed,
 # Sisennys yhden painalluksen tabulaattoria verran eli 4 välilyöntiä
 indent-string='    '
 
+# Maksimirivin pituus 100 yleinen
+max-line-length=100
+
 [REFACTORING]
 
 [DESIGN]
