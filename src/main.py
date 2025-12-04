@@ -14,8 +14,8 @@ def main():
     io = KonsoliIO()
     io.kirjoita("\nTervetuloa lähdeviite työkaluun!")
     while True:
-        io.kirjoita("Haluatko lisätä lähdeviitteen, listata lähdeviitteesi, hakea yksittäisen viitteen, " +
-                    "poistaa lähdeviitteen vai lopettaa?")
+        io.kirjoita("Haluatko lisätä lähdeviitteen, listata lähdeviitteesi, hakea yksittäisen " +
+                    "viitteen, poistaa lähdeviitteen vai lopettaa?")
 
         valitse = io.lue("> ").strip().lower()
 
