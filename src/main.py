@@ -14,7 +14,7 @@ def main():
     io = KonsoliIO()
     io.kirjoita("\nTervetuloa lähdeviite työkaluun!")
     while True:
-        io.kirjoita("Haluatko lisätä lähdeviitteen, listata lähdeviitteesi, yksittäinen viite " +
+        io.kirjoita("Haluatko lisätä lähdeviitteen, listata lähdeviitteesi, hakea yksittäisen viitteen, " +
                     "poistaa lähdeviitteen vai lopettaa?")
 
         valitse = io.lue("> ").strip().lower()
@@ -25,7 +25,7 @@ def main():
         if valitse == "listaa":
             listaa_viitteet(BIBFILE, io)
             continue
-        if valitse == "yksittäinen":
+        if valitse == "hae":
             listaa_yksittainen_viite(BIBFILE, io)
             continue
         if valitse == "poista":
@@ -35,6 +35,8 @@ def main():
             io.kirjoita("Heippa!\n")
             return
         io.kirjoita("en tiedä mitä tarkoitat :(\n")
+        io.kirjoita("Valitse joku näistä komennoista:")
+        io.kirjoita("lisää | listaa | hae | poista | lopeta\n")
 
 if __name__ == "__main__":
     main()
