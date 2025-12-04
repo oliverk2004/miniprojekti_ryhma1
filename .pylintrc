@@ -19,6 +19,8 @@ disable=raw-checker-failed,
         unnecessary-lambda-assignment
 
 [FORMAT]
+# Sisennys yhden painalluksen tabulaattoria verran eli 4 välilyöntiä
+indent-string='    '
 
 [REFACTORING]
 
