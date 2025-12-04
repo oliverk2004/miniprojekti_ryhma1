@@ -52,7 +52,7 @@ def lisaa_viitteen_tiedot(konsoli):
     if otsikko:
         kentat['title'] = otsikko
 
-    # varmistus, että syöte on numero
+    # varmistus, että syöte on numero tai tyhjä
     while True:
         vuosi = konsoli.lue("Vuosi: ").strip()
         if not vuosi:
@@ -60,8 +60,7 @@ def lisaa_viitteen_tiedot(konsoli):
         if vuosi.isdigit() and len(vuosi) == 4:
             kentat['year'] = vuosi
             break
-        else:
-            konsoli.kirjoita("Virhe: Syötä nelinumeroinen vuosiluku.\n")
+        konsoli.kirjoita("Virhe: Syötä nelinumeroinen vuosiluku tai jätä tyhjäksi.\n")
     konsoli.kirjoita("")
     return kentat
 
