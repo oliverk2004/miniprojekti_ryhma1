@@ -1,250 +1,250 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.10.11 on win32)" generated="2025-12-04T14:38:01.938865" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.10.11 on win32)" generated="2025-12-04T15:12:14.209619" rpa="false" schemaversion="5">
 <suite id="s1" name="Src" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src">
 <suite id="s1-s1" name="Tests" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src\tests">
 <suite id="s1-s1-s1" name="Lisaa Viite" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src\tests\lisaa_viite.robot">
 <kw name="Testausympäristö Asetettu" owner="resource" type="SETUP">
 <kw name="Luo Testi Io" owner="RobotLibrary">
-<status status="PASS" start="2025-12-04T14:38:02.085653" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.338818" elapsed="0.000000"/>
 </kw>
 <kw name="Aseta Testi Tiedosto" owner="RobotLibrary">
 <arg>${TEST_BIB_FILE}</arg>
-<status status="PASS" start="2025-12-04T14:38:02.085653" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.338818" elapsed="0.002013"/>
 </kw>
-<status status="PASS" start="2025-12-04T14:38:02.083616" elapsed="0.002037"/>
+<status status="PASS" start="2025-12-04T15:12:14.336681" elapsed="0.004150"/>
 </kw>
-<test id="s1-s1-s1-t1" name="As A User I Want To Add References" line="9">
+<test id="s1-s1-s1-t1" name="As A User I Want To Add One Reference" line="9">
 <kw name="Aseta Testi Tiedosto" owner="RobotLibrary">
 <arg>${TEST_BIB_FILE}</arg>
-<status status="PASS" start="2025-12-04T14:38:02.085653" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.340831" elapsed="0.000000"/>
 </kw>
 <kw name="Given Käyttäjä Lisää Viitteen" owner="resource">
 <kw name="Lisaa Viite Bib Tiedostoon" owner="RobotLibrary">
 <arg>${tyyppi}</arg>
 <arg>${viiteavain}</arg>
 <arg>&amp;{kentät}</arg>
-<status status="PASS" start="2025-12-04T14:38:02.085653" elapsed="0.503930"/>
+<status status="PASS" start="2025-12-04T15:12:14.340831" elapsed="0.454589"/>
 </kw>
 <arg>book</arg>
 <arg>lisätään123</arg>
 <arg>author=Lisääjä</arg>
 <arg>title=Lisäys</arg>
 <arg>year=1234</arg>
-<status status="PASS" start="2025-12-04T14:38:02.085653" elapsed="0.503930"/>
+<status status="PASS" start="2025-12-04T15:12:14.340831" elapsed="0.454589"/>
 </kw>
 <kw name="When Käyttäjä Listaa Viitteet" owner="resource">
 <kw name="Käyttäjä Listaa Viitteet Järjestyksessä" owner="resource">
 <kw name="Lajittele Syotteet" owner="RobotLibrary">
 <arg>${järjestys}</arg>
 <arg>poistu</arg>
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.795420" elapsed="0.000000"/>
 </kw>
 <kw name="Call Listaa Viitteet" owner="RobotLibrary">
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.795420" elapsed="0.000000"/>
 </kw>
 <arg>avain</arg>
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.795420" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.795420" elapsed="0.000000"/>
 </kw>
 <kw name="Then Käyttäjä Näkee Tulostuksessa" owner="resource">
 <kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
 <arg>${teksti}</arg>
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.795420" elapsed="0.000000"/>
 </kw>
 <arg>book</arg>
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.795420" elapsed="0.000000"/>
 </kw>
 <kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
 <kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
 <arg>${teksti}</arg>
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.795420" elapsed="0.000000"/>
 </kw>
 <arg>lisätään123</arg>
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.795420" elapsed="0.000000"/>
 </kw>
 <kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
 <kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
 <arg>${teksti}</arg>
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.795420" elapsed="0.016103"/>
 </kw>
 <arg>Lisääjä</arg>
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.795420" elapsed="0.016103"/>
 </kw>
 <kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
 <kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
 <arg>${teksti}</arg>
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.811523" elapsed="0.000000"/>
 </kw>
 <arg>Lisäys</arg>
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.811523" elapsed="0.000000"/>
 </kw>
 <kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
 <kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
 <arg>${teksti}</arg>
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.811523" elapsed="0.000000"/>
 </kw>
 <arg>1234</arg>
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.811523" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-12-04T14:38:02.085653" elapsed="0.503930"/>
+<status status="PASS" start="2025-12-04T15:12:14.340831" elapsed="0.470692"/>
 </test>
 <kw name="Poista Turhat Testitiedostot" owner="resource" type="TEARDOWN">
 <kw name="Poista Testi Tiedosto" owner="RobotLibrary">
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.016017"/>
+<status status="PASS" start="2025-12-04T15:12:14.811523" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-12-04T14:38:02.589583" elapsed="0.016017"/>
+<status status="PASS" start="2025-12-04T15:12:14.811523" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-12-04T14:38:02.008814" elapsed="0.596786"/>
+<status status="PASS" start="2025-12-04T15:12:14.257345" elapsed="0.554178"/>
 </suite>
 <suite id="s1-s1-s2" name="Listaa Viitteet" source="C:\kurssit\ohjelmistotuotanto\miniprojekti_ryhma1\src\tests\listaa_viitteet.robot">
 <kw name="Testausympäristö Asetettu" owner="resource" type="SETUP">
 <kw name="Luo Testi Io" owner="RobotLibrary">
-<status status="PASS" start="2025-12-04T14:38:02.615953" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.827184" elapsed="0.000000"/>
 </kw>
 <kw name="Aseta Testi Tiedosto" owner="RobotLibrary">
 <arg>${TEST_BIB_FILE}</arg>
-<status status="PASS" start="2025-12-04T14:38:02.615953" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.827184" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-12-04T14:38:02.615953" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.827184" elapsed="0.000000"/>
 </kw>
 <test id="s1-s1-s2-t1" name="As A User I Want To See One Reference" line="7">
 <kw name="Aseta Testi Tiedosto" owner="RobotLibrary">
 <arg>${TEST_BIB_FILE}</arg>
-<status status="PASS" start="2025-12-04T14:38:02.615953" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:14.827184" elapsed="0.000000"/>
 </kw>
 <kw name="Given Käyttäjä Lisää Viitteen" owner="resource">
 <kw name="Lisaa Viite Bib Tiedostoon" owner="RobotLibrary">
 <arg>${tyyppi}</arg>
 <arg>${viiteavain}</arg>
 <arg>&amp;{kentät}</arg>
-<status status="PASS" start="2025-12-04T14:38:02.615953" elapsed="0.433353"/>
+<status status="PASS" start="2025-12-04T15:12:14.827184" elapsed="0.411318"/>
 </kw>
 <arg>book</arg>
 <arg>testi123</arg>
 <arg>author=Kirjailija</arg>
 <arg>title=Testi</arg>
 <arg>year=2025</arg>
-<status status="PASS" start="2025-12-04T14:38:02.615953" elapsed="0.433353"/>
+<status status="PASS" start="2025-12-04T15:12:14.827184" elapsed="0.411318"/>
 </kw>
 <kw name="When Käyttäjä Listaa Viitteet" owner="resource">
 <kw name="Käyttäjä Listaa Viitteet Järjestyksessä" owner="resource">
 <kw name="Lajittele Syotteet" owner="RobotLibrary">
 <arg>${järjestys}</arg>
 <arg>poistu</arg>
-<status status="PASS" start="2025-12-04T14:38:03.049306" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.254393" elapsed="0.000000"/>
 </kw>
 <kw name="Call Listaa Viitteet" owner="RobotLibrary">
-<status status="PASS" start="2025-12-04T14:38:03.049306" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.254393" elapsed="0.000000"/>
 </kw>
 <arg>avain</arg>
-<status status="PASS" start="2025-12-04T14:38:03.049306" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.254393" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-12-04T14:38:03.049306" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.238502" elapsed="0.015891"/>
 </kw>
 <kw name="Then Käyttäjä Näkee Tulostuksessa" owner="resource">
 <kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
 <arg>${teksti}</arg>
-<status status="PASS" start="2025-12-04T14:38:03.065293" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.254393" elapsed="0.000000"/>
 </kw>
 <arg>book</arg>
-<status status="PASS" start="2025-12-04T14:38:03.049306" elapsed="0.015987"/>
+<status status="PASS" start="2025-12-04T15:12:15.254393" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-12-04T14:38:02.615953" elapsed="0.449340"/>
+<status status="PASS" start="2025-12-04T15:12:14.827184" elapsed="0.427209"/>
 </test>
 <test id="s1-s1-s2-t2" name="As A User I Want To See All My References" line="17">
 <kw name="Aseta Testi Tiedosto" owner="RobotLibrary">
 <arg>${TEST_BIB_FILE}</arg>
-<status status="PASS" start="2025-12-04T14:38:03.065293" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.254393" elapsed="0.000000"/>
 </kw>
 <kw name="Given Käyttäjä Lisää Viitteen" owner="resource">
 <kw name="Lisaa Viite Bib Tiedostoon" owner="RobotLibrary">
 <arg>${tyyppi}</arg>
 <arg>${viiteavain}</arg>
 <arg>&amp;{kentät}</arg>
-<status status="PASS" start="2025-12-04T14:38:03.068435" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.254393" elapsed="0.000000"/>
 </kw>
 <arg>article</arg>
 <arg>testi123</arg>
 <arg>author=Kirjailija</arg>
 <arg>title=Testi</arg>
 <arg>year=2025</arg>
-<status status="PASS" start="2025-12-04T14:38:03.068435" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.254393" elapsed="0.000000"/>
 </kw>
 <kw name="Given Käyttäjä Lisää Viitteen" owner="resource">
 <kw name="Lisaa Viite Bib Tiedostoon" owner="RobotLibrary">
 <arg>${tyyppi}</arg>
 <arg>${viiteavain}</arg>
 <arg>&amp;{kentät}</arg>
-<status status="PASS" start="2025-12-04T14:38:03.068435" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.254393" elapsed="0.000000"/>
 </kw>
 <arg>book</arg>
 <arg>testi1234</arg>
 <arg>author=Kirjailija2</arg>
 <arg>title=Testi2</arg>
 <arg>year=2026</arg>
-<status status="PASS" start="2025-12-04T14:38:03.068435" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.254393" elapsed="0.000000"/>
 </kw>
 <kw name="When Käyttäjä Listaa Viitteet" owner="resource">
 <kw name="Käyttäjä Listaa Viitteet Järjestyksessä" owner="resource">
 <kw name="Lajittele Syotteet" owner="RobotLibrary">
 <arg>${järjestys}</arg>
 <arg>poistu</arg>
-<status status="PASS" start="2025-12-04T14:38:03.068435" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.270462" elapsed="0.000000"/>
 </kw>
 <kw name="Call Listaa Viitteet" owner="RobotLibrary">
-<status status="PASS" start="2025-12-04T14:38:03.068435" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.270462" elapsed="0.000000"/>
 </kw>
 <arg>avain</arg>
-<status status="PASS" start="2025-12-04T14:38:03.068435" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.254393" elapsed="0.016069"/>
 </kw>
-<status status="PASS" start="2025-12-04T14:38:03.068435" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.254393" elapsed="0.016069"/>
 </kw>
 <kw name="Then Käyttäjä Näkee Tulostuksessa" owner="resource">
 <kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
 <arg>${teksti}</arg>
-<status status="PASS" start="2025-12-04T14:38:03.068435" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.270462" elapsed="0.000000"/>
 </kw>
 <arg>article</arg>
-<status status="PASS" start="2025-12-04T14:38:03.068435" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.270462" elapsed="0.000000"/>
 </kw>
 <kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
 <kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
 <arg>${teksti}</arg>
-<status status="PASS" start="2025-12-04T14:38:03.068435" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.274260" elapsed="0.000000"/>
 </kw>
 <arg>book</arg>
-<status status="PASS" start="2025-12-04T14:38:03.068435" elapsed="0.012861"/>
+<status status="PASS" start="2025-12-04T15:12:15.274260" elapsed="0.000000"/>
 </kw>
 <kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
 <kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
 <arg>${teksti}</arg>
-<status status="PASS" start="2025-12-04T14:38:03.081296" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.274260" elapsed="0.000000"/>
 </kw>
 <arg>Testi</arg>
-<status status="PASS" start="2025-12-04T14:38:03.081296" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.274260" elapsed="0.000000"/>
 </kw>
 <kw name="And Käyttäjä Näkee Tulostuksessa" owner="resource">
 <kw name="Tuloste Pitaisi Olla" owner="RobotLibrary">
 <arg>${teksti}</arg>
-<status status="PASS" start="2025-12-04T14:38:03.081296" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.274260" elapsed="0.000000"/>
 </kw>
 <arg>testi1234</arg>
-<status status="PASS" start="2025-12-04T14:38:03.081296" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.274260" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-12-04T14:38:03.065293" elapsed="0.016003"/>
+<status status="PASS" start="2025-12-04T15:12:15.254393" elapsed="0.019867"/>
 </test>
 <kw name="Poista Turhat Testitiedostot" owner="resource" type="TEARDOWN">
 <kw name="Poista Testi Tiedosto" owner="RobotLibrary">
-<status status="PASS" start="2025-12-04T14:38:03.081296" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.274260" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-12-04T14:38:03.081296" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-04T15:12:15.274260" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-12-04T14:38:02.605600" elapsed="0.475696"/>
+<status status="PASS" start="2025-12-04T15:12:14.811523" elapsed="0.462737"/>
 </suite>
-<status status="PASS" start="2025-12-04T14:38:02.002762" elapsed="1.078534"/>
+<status status="PASS" start="2025-12-04T15:12:14.257345" elapsed="1.016915"/>
 </suite>
-<status status="PASS" start="2025-12-04T14:38:01.938865" elapsed="1.142431"/>
+<status status="PASS" start="2025-12-04T15:12:14.209619" elapsed="1.064641"/>
 </suite>
 <statistics>
 <total>

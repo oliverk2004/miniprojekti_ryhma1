@@ -6,7 +6,7 @@ Suite Teardown  Poista Turhat Testitiedostot
 
 
 *** Test Cases ***
-As A User I Want To Add References
+As A User I Want To Add One Reference
     Aseta Testi Tiedosto    ${TEST_BIB_FILE}
     Given Käyttäjä Lisää Viitteen  book  lisätään123  
     ...  author=Lisääjä  

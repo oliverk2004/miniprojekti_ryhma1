@@ -5,6 +5,7 @@ from pybtex.database import BibliographyData, Entry
 from pybtex.database.input import bibtex
 from pybtex.database.output.bibtex import Writer
 from funktiot.lisaa_viite import lisaa_viite
+from funktiot.poista_viite import poista_viite
 from funktiot.listaa_viitteet import listaa_viitteet
 from funktiot.bibtex_funktiot import tallenna, lataa_bibtex_tiedosto
 
@@ -53,6 +54,11 @@ class RobotLibrary:
             self.luo_testi_io()
         listaa_viitteet(self.test_bib_file, self.io)
         return "Viitteet listattu"
+    
+
+    def call_poista_viitteet(self):
+        poista_viite(self.test_bib_file, self.io)
+
 
     # Pitää luoda jokin metodi, jolla saadaan poistettua testitiedosto aina, jotta ei ole montaa testitiedostoa
     def poista_testi_tiedosto(self):
