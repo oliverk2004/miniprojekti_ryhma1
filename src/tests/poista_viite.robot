@@ -13,4 +13,4 @@ AS A User I Want To Remove Reference
     ...    year=2020
     Lajittele Syotteet    avain    Kyllä
     Call Poista Viitteet
-    Käyttäjä Näkee Tulostuksessa    onnistui
+    Käyttäjä Näkee Tulostuksessa    poistaminen
