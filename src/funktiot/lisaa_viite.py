@@ -9,10 +9,10 @@ def lisaa_viite(bib_tiedosto, konsoli: KonsoliIO):
 
     # Lataa olemassa olevat viitteet viitteet.bib tiedostosta
     bib_data = lataa_bibtex_tiedosto(bib_tiedosto)
-            
+
     if bib_data is None:
-            # Taas tein tämän, jos ei olisi viitteet.bib tiedostoa jo luotuna
-            bib_data = BibliographyData()
+        # Taas tein tämän, jos ei olisi viitteet.bib tiedostoa jo luotuna
+        bib_data = BibliographyData()
 
     viiteavain = lisaa_viiteavain(konsoli, bib_data)
     if viiteavain is None:
