@@ -12,5 +12,6 @@ As A User I Want To Add One Reference
     ...  author=Lisääjä  
     ...  title=Lisäys
     ...  year=1234
+    ...  vahvistus=Kyllä
     When Käyttäjä Listaa Viitteet
     Then Käyttäjä Näkee Tulostuksessa  book

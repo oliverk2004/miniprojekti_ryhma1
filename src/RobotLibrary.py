@@ -30,6 +30,7 @@ class RobotLibrary:
         tallenna(self.test_bib_file, bib_data)
         return f"Tiedosto luotu."
 
+    """
     def lisaa_viite_bib_tiedostoon(self, tyyppi, viiteavain, **kentät): # TODO: Tämä pitäisi päivittää nykyiseen muotoon...
         bib_data = lataa_bibtex_tiedosto(self.test_bib_file)
         if bib_data is None: # Jos viitteitä ei vielä ole
@@ -40,10 +41,10 @@ class RobotLibrary:
         tallenna(self.test_bib_file, bib_data)
 
         return f"Viite lisätty {viiteavain}"
-
+    """
     # Pitää luoda tiedosto, jossa nyt kun tarvitaan syötteet, sillä nyt voidaan lajitella syötteet 
     # aakkosjärjestyksessä ja vanhimmasta uusimpaan.
-    def lajittele_syotteet(self, *syotteet):
+    def aseta_syotteet(self, *syotteet):
         if not self.io:
             self.luo_testi_io()
         self.io.input = list(syotteet)

@@ -21,13 +21,14 @@ Tyhjä BibTex Tiedosto
 
 
 Käyttäjä Lisää Viitteen
-    [Arguments]    ${tyyppi}    ${viiteavain}    &{kentät}
-    Lisaa Viite Bib Tiedostoon     ${tyyppi}    ${viiteavain}    &{kentät}
+    [Arguments]    ${tyyppi}    ${viiteavain}    ${author}    ${title}    ${year}    ${vahvistus}
+    Aseta Syotteet     ${tyyppi}    ${viiteavain}    ${author}    ${title}    ${year}    ${vahvistus}
+    Call Lisaa Viite
 
 
 Käyttäjä Listaa Viitteet Järjestyksessä
     [Arguments]    ${järjestys}
-    Lajittele Syotteet    ${järjestys}  poistu
+    Aseta Syotteet    ${järjestys}  poistu
     Call Listaa Viitteet
 
 
