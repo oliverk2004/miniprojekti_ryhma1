@@ -9,9 +9,9 @@ Suite Teardown  Poista Turhat Testitiedostot
 As A User I Want To Add One Reference
     Aseta Testi Tiedosto    ${TEST_BIB_FILE}
     When Käyttäjä Lisää Viitteen  book  lisätään123  
-    ...  author=Lisääjä  
-    ...  title=Lisäys
-    ...  year=1234
-    ...  vahvistus=Kyllä
+    ...  Lisääjä  
+    ...  Lisäys
+    ...  1234
+    ...  Kyllä
     When Käyttäjä Listaa Viitteet
     Then Käyttäjä Näkee Tulostuksessa  book

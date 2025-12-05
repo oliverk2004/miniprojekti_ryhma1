@@ -11,6 +11,7 @@ AS A User I Want To Remove Reference
     ...    author=testaaja    
     ...    title=testi    
     ...    year=2020
-    Lajittele Syotteet    avain    Kyllä
+    ...    vahvistus=Kyllä
+    Aseta Syotteet    avain    Kyllä
     Call Poista Viitteet
-    Käyttäjä Näkee Tulostuksessa    poistaminen
+    Käyttäjä Näkee Tulostuksessa    onnistui
