@@ -29,3 +29,19 @@ As A User I Want To See All My References
     Aseta Syotteet  tyyppi    Kyllä
     When Käyttäjä Listaa Viitteet
     Then Käyttäjä Näkee Tulostuksessa  book
+
+
+As A User I Want To See All My References By Year
+    Aseta Testi Tiedosto  ${TEST_BIB_FILE}
+    When Käyttäjä Lisää Viitteen  article  artikkeli1  
+    ...  Lisääjä  
+    ...  Lisäys
+    ...  1000
+    ...  Kyllä
+    Then Käyttäjä Lisää Viitteen  book  kirja300 
+    ...  Lisääjä2  
+    ...  Lisäys2
+    ...  2000
+    ...  Kyllä
+    When Käyttäjä Listaa Viitteet Järjestyksessä  vuosi
+    Then Käyttäjä Näkee Tulostuksessa  LÄHDEVIITTEET JULKAISUVUODEN MUKAAN
