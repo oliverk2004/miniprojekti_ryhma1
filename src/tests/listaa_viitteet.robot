@@ -45,3 +45,19 @@ As A User I Want To See All My References By Year
     ...  Kyllä
     When Käyttäjä Listaa Viitteet Järjestyksessä  vuosi
     Then Käyttäjä Näkee Tulostuksessa  LÄHDEVIITTEET JULKAISUVUODEN MUKAAN
+
+
+As A User I Want To See All My References By Author
+    Aseta Testi Tiedosto  ${TEST_BIB_FILE}
+    When Käyttäjä Lisää Viitteen  article  artikkeli9  
+    ...  Herra Hakkarainen  
+    ...  Lisäys
+    ...  1000
+    ...  Kyllä
+    Then Käyttäjä Lisää Viitteen  book  kirja321 
+    ...  Tessa Testaaja  
+    ...  Lisäys2
+    ...  2000
+    ...  Kyllä
+    When Käyttäjä Listaa Viitteet Järjestyksessä  nimi
+    Then Käyttäjä Näkee Tulostuksessa  LÄHDEVIITTEET KIRJOITTAJAN NIMEN MUKAAN
