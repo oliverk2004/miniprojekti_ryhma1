@@ -35,6 +35,13 @@ Käyttäjä Listaa Viitteet Järjestyksessä
 Käyttäjä Listaa Viitteet
     Käyttäjä Listaa Viitteet Järjestyksessä  avain
 
+
 Käyttäjä Näkee Tulostuksessa
     [Arguments]    ${teksti}
     Tuloste Pitaisi Olla    ${teksti}
+
+
+Käyttäjä Hakee Yksittäisen Viitteen
+    [Arguments]    ${viiteavain}
+    Aseta Syotteet    ${viiteavain}    peru
+    Call Hae Viite
