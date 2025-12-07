@@ -61,3 +61,19 @@ As A User I Want To See All My References By Author
     ...  Kyllä
     When Käyttäjä Listaa Viitteet Järjestyksessä  nimi
     Then Käyttäjä Näkee Tulostuksessa  LÄHDEVIITTEET KIRJOITTAJAN NIMEN MUKAAN
+
+
+As A User I Want To See All My References By Title
+    Aseta Testi Tiedosto  ${TEST_BIB_FILE}
+    When Käyttäjä Lisää Viitteen  book  a123  
+    ...  Herra Hakkarainen  
+    ...  Lisäys
+    ...  1000
+    ...  Kyllä
+    Then Käyttäjä Lisää Viitteen  book  b123 
+    ...  Tessa Testaaja  
+    ...  Lisäys2
+    ...  2000
+    ...  Kyllä
+    When Käyttäjä Listaa Viitteet Järjestyksessä  abc
+    Then Käyttäjä Näkee Tulostuksessa  LÄHDEVIITTEET TEOKSEN NIMEN MUKAAN
