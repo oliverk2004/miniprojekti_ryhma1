@@ -1,6 +1,22 @@
 import requests
 import time
 
+class CrossrefAPI:
+    BASE_URL = "https://api.crossref.org/works/"
+
+    def __init__(self, http_get=requests.get, sleep=time.sleep):
+        self.http_get = http_get
+        self.sleep = sleep
+
+    def fetch_doi(self, doi):
+        url = f"{self.BASE_URL}{doi}"
+        resp = self.http_get(url)
+        self.sleep(1)
+
+        if resp.status_code != 200:
+            return None
+        return resp.json()
+
 class Scraper:
     """
     Web scraper class for getting reference data with a DOI tag.
@@ -8,17 +24,14 @@ class Scraper:
     Methods:
         - scrape(str): Takes a DOI tag and returns the doi metadata.
     """
-    def __init__(self):
-        # Initialize driver properly
-        # self.driver = self._init_driver()
-        pass
+    def __init__(self, api=None):
+        self.api = api or CrossrefAPI()
 
     def scrape(self, doi):
-        osoite = f"https://api.crossref.org/works/{doi}"
-        response = requests.get(osoite)
-        time.sleep(1)
-        data = response.json()
-        return self.title(data), self.authors(data), self.published(data)
+        data = self.api.fetch_doi(doi)
+        if data is None:
+            return None
+        return [self.title(data), self.authors(data), self.published(data)]
 
     def title(self, data):
         return data["message"]["title"][0]
