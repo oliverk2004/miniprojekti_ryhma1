@@ -44,14 +44,16 @@ def listaa_viitteet(bib_tiedosto, konsoli: KonsoliIO):
         elif varmistus.lower() == "poistu":
             break
         else:
-            konsoli.kirjoita("Tuntematon komento. Kirjoita avain, abc, nimi, vuosi, rajaa tai poistu")
+            konsoli.kirjoita("Tuntematon komento.")
+            konsoli.kirjoita("Kirjoita avain, abc, nimi, vuosi, rajaa tai poistu")
             continue
         # Viitteiden tulostus käyttäjän haluaman järjestyksen perusteella.
         bibtex_str = parsi_bibtex(data_tulostukseen)
         konsoli.kirjoita(bibtex_str)
 
 # Funktio, joka määrittää minkä kriteerin mukaan viitteet lajitellaan.
-def jarjesta_komennon_mukaan(bib_data: BibliographyData, kentta: str, min_str=None, max_str=None) -> BibliographyData:
+def jarjesta_komennon_mukaan(bib_data: BibliographyData,
+    kentta: str, min_str=None, max_str=None) -> BibliographyData:
 
     # Valitaan oikea lajittelukriteeri
     if kentta == 'nimi':
@@ -143,9 +145,8 @@ def hanki_vuosi_lajitteluarvo_vanhin_ensin(item):
 
     # Vuosi puuttuu tai on virheellinen. Menee tulostettavan listan loppuun. Palautuu tuple (1, 0).
     return (1, 0)
-
 # Funktio rajaa viitteistä käyttäjän antamien vuosien perusteella halutut viitteet
-def rajaa_vuodet(bib_data, min_vuosi, max_vuosi):    
+def rajaa_vuodet(bib_data, min_vuosi, max_vuosi):
     suodatetut_itemit = OrderedDict()
 
     for key, entry in bib_data.entries.items():
@@ -175,7 +176,7 @@ def hanki_vuosirajat(konsoli):
         except ValueError:
             konsoli.kirjoita("VIRHE: Vuosien on oltava kokonaislukuja (esim. 2000).")
             continue
-        
+
         # vuosien oltava positiivisia
         if min_v < 0 or max_v < 0:
             konsoli.kirjoita("VIRHE: Vuodet eivät voi olla negatiivisia.")
@@ -184,5 +185,4 @@ def hanki_vuosirajat(konsoli):
         if min_v > max_v:
             konsoli.kirjoita("VIRHE: Alaraja ei voi olla suurempi kuin yläraja!")
             continue
-
         return min_v, max_v
