@@ -263,7 +263,6 @@ def test_listaa_viitteet_lajittelee_otsikon_mukaan(tmp_path):
     assert index_B < index_C
     assert index_C < index_D
 
-
 def test_listaa_viitteet_lajittelee_avaimen_mukaan(tmp_path):
     tiedosto = tmp_path / "test_avain.bib"
     
@@ -294,3 +293,66 @@ def test_listaa_viitteet_lajittelee_avaimen_mukaan(tmp_path):
     # Tarkistetaan järjestys: A < B < C
     assert index_A < index_B
     assert index_B < index_C
+
+def test_listaa_viitteet_rajaa_vuodet_toimii(tmp_path):
+    tiedosto = tmp_path / "test_rajaus.bib"
+    
+    # Luodaan testidataa: 1 liian vanha, 2 ok, 1 liian uusi.
+    viite_vanha = "@book{vanha, author={A}, title={Liian Vanha}, year={1990}}"
+    viite_ok1 = "@article{ok1, author={B}, title={Sopiva Yksi}, year={2005}}"
+    viite_ok2 = "@misc{ok2, author={C}, title={Sopiva Kaksi}, year={2020}}"
+    viite_uusi = "@book{uusi, author={D}, title={Tulevaisuus}, year={2030}}"
+    
+    bibtex_data = f"{viite_vanha}\n{viite_ok1}\n{viite_ok2}\n{viite_uusi}"
+    tiedosto.write_text(bibtex_data, encoding="utf-8")
+
+    # käyttäjän komennot
+    io = StubIO()
+    io.input = ["rajaa", "2000", "2020", "poistu"]
+    
+    listaa_viitteet(tiedosto, io)
+
+    output_str = "\n".join(io.output)
+
+    assert "LÄHDEVIITTEET RAJATTU AIKAVÄLILLÄ" in output_str
+    
+    # Tarkistetaan, että SOPIVAT viitteet löytyvät
+    assert "Sopiva Yksi" in output_str
+    assert "Sopiva Kaksi" in output_str
+    
+    # Tarkistetaan, että VÄÄRÄT viitteet EIVÄT löydy
+    assert "Liian Vanha" not in output_str
+    assert "Tulevaisuus" not in output_str
+
+def test_listaa_viitteet_rajaa_virheelliset_syotteet(tmp_path):
+    tiedosto = tmp_path / "test_rajaus_virheet.bib"
+    
+    # Luodaan esimerkki viite
+    tiedosto.write_text("@book{test, title={Testi}, year={2010}}", encoding="utf-8")
+
+    io = StubIO()
+
+    io.input = [
+        "rajaa", 
+        "abc", "def",   # Virhe 1 (ei numeroita)
+        "-5", "2000",       # Virhe 2 (negatiivinen)
+        "2020", "2000",     # Virhe 3 (pieni < suuri, logiikka)
+        "2000", "2020",     # Oikein
+        "poistu"
+    ]
+    
+    listaa_viitteet(tiedosto, io)
+    
+    output_str = "\n".join(io.output)
+
+    # Tarkistetaan, että "ei numeroita" -virheviesti tuli
+    assert "VIRHE: Vuosien on oltava kokonaislukuja" in output_str
+
+    # Tarkistetaan, että "negatiivinen" -virheviesti tuli
+    assert "VIRHE: Vuodet eivät voi olla negatiivisia" in output_str
+
+    # Tarkistetaan, että "alaraja > yläraja" -virheviesti tuli
+    assert "VIRHE: Alaraja ei voi olla suurempi kuin yläraja" in output_str
+    
+    # Tarkistetaan, että lopulta onnistuttiin (oikea otsikko tulostui)
+    assert "LÄHDEVIITTEET RAJATTU AIKAVÄLILLÄ" in output_str
