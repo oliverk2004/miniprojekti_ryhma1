@@ -1,4 +1,4 @@
-from src.scraper import Scraper
+from src.scraper import Scraper, CrossrefAPI
 import unittest
 
 class MockAPI:
@@ -14,6 +14,10 @@ class MockAPI:
             }
         }
     
+class MockBadAPI:
+    def fetch_doi(self, doi):
+        return None
+    
 class TestScraper(unittest.TestCase):
 
     def setUp(self):
@@ -25,3 +29,7 @@ class TestScraper(unittest.TestCase):
         self.assertEqual(data[0], "Aku Ankan Tarinat vol. 1")
         self.assertEqual(data[1], "Aku Ankka, Roope Ankka")
         self.assertEqual(data[2], 2021)
+
+    def test_scrape_returns_none_for_invalid(self):
+        scraper = Scraper(api=MockBadAPI())
+        self.assertIsNone(scraper.scrape("bad-doi"))
