@@ -16,7 +16,7 @@ disable=raw-checker-failed,
         missing-module-docstring,
         missing-function-docstring,
         missing-class-docstring,
-        unnecessary-lambda-assignment
+        unnecessary-lambda-assignment,
         too-few-public-methods
 
 [FORMAT]
