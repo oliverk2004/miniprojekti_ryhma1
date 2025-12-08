@@ -20,11 +20,15 @@ jobs:
         run: pip install poetry
       - name: Install dependencies
         run: poetry install --no-root
-      - name: Run tests
+      - name: Run tests and create coverage report with pytest
         run: poetry run coverage run --branch -m pytest
+      - name: Run tests and create coverage report with robot
+        run: poetry run coverage run -m robot src/tests
       - name: Coverage report
         run: poetry run coverage xml
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Run pylint
+        run: poetry run pylint src

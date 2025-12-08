@@ -1,0 +1,32 @@
+[MASTER]
+
+init-hook='import sys; sys.path.append("src")'
+ignore=tests,RobotLibrary.py,konsoli_IO.py,StubIO.py
+
+[MESSAGE CONTROL]
+
+disable=raw-checker-failed,
+        bad-inline-option,
+        locally-disabled,
+        file-ignored,
+        suppressed-message,
+        useless-suppression,
+        deprecated-pragma,
+        use-symbolic-message-instead,
+        missing-module-docstring,
+        missing-function-docstring,
+        missing-class-docstring,
+        unnecessary-lambda-assignment
+
+[FORMAT]
+# Sisennys yhden painalluksen tabulaattoria verran eli 4 välilyöntiä
+indent-string='    '
+
+# Maksimirivin pituus 100 yleinen
+max-line-length=100
+
+[REFACTORING]
+
+[DESIGN]
+# Maksimissaan 5 argumenttia funktioihin ja metodeihin.
+max-args=5

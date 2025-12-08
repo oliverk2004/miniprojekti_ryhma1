@@ -21,14 +21,27 @@ Tyhjä BibTex Tiedosto
 
 
 Käyttäjä Lisää Viitteen
-    [Arguments]    ${tyyppi}    ${viiteavain}    &{kentät}
-    Lisaa Viite Bib Tiedostoon     ${tyyppi}    ${viiteavain}    &{kentät}
+    [Arguments]    ${tyyppi}    ${viiteavain}    ${author}    ${title}    ${year}    ${vahvistus}
+    Aseta Syotteet     ${tyyppi}    ${viiteavain}    ${author}    ${title}    ${year}    ${vahvistus}
+    Call Lisaa Viite
+
+
+Käyttäjä Listaa Viitteet Järjestyksessä
+    [Arguments]    ${järjestys}
+    Aseta Syotteet    ${järjestys}  poistu
+    Call Listaa Viitteet
 
 
 Käyttäjä Listaa Viitteet
-    Call Listaa Viitteet
+    Käyttäjä Listaa Viitteet Järjestyksessä  avain
 
 
 Käyttäjä Näkee Tulostuksessa
     [Arguments]    ${teksti}
     Tuloste Pitaisi Olla    ${teksti}
+
+
+Käyttäjä Hakee Yksittäisen Viitteen
+    [Arguments]    ${viiteavain}
+    Aseta Syotteet    ${viiteavain}    peru
+    Call Hae Viite
