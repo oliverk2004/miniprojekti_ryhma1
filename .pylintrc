@@ -1,7 +1,7 @@
 [MASTER]
 
 init-hook='import sys; sys.path.append("src")'
-ignore=tests,RobotLibrary.py,konsoli_IO.py,StubIO.py
+ignore=tests,RobotLibrary.py,konsoli_IO.py,StubIO.py, scraper_example.py
 
 [MESSAGE CONTROL]
 

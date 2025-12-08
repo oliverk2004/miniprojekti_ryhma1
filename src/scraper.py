@@ -1,5 +1,6 @@
-import requests
 import time
+import requests
+
 
 class CrossrefAPI:
     BASE_URL = "https://api.crossref.org/works/"
@@ -42,6 +43,6 @@ class Scraper:
             for author in data["message"]["author"]
         )
         return author_names
-    
+
     def published(self, data):
         return data["message"]["published"]["date-parts"][0][0]
