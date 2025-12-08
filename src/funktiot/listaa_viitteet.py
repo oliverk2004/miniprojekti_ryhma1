@@ -20,8 +20,8 @@ def listaa_viitteet(bib_tiedosto, konsoli: KonsoliIO):
         konsoli.kirjoita("rajaa (Listaa viitteet annetun kahden vuoden [min-max] väliltä)")
         konsoli.kirjoita("poistu (poistu viitteiden listauksesta)")
 
-        minVuosi = None
-        maxVuosi = None
+        min_vuosi = None
+        max_vuosi = None
 
         varmistus = konsoli.lue("Anna komento: \n> ")
 
@@ -38,32 +38,9 @@ def listaa_viitteet(bib_tiedosto, konsoli: KonsoliIO):
             konsoli.kirjoita("LÄHDEVIITTEET JULKAISUVUODEN MUKAAN")
             data_tulostukseen = jarjesta_komennon_mukaan(bib_data, 'vuosi')
         elif varmistus.lower() == "rajaa":
-
-            while True:
-                minVuosi = konsoli.lue("Anna alaraja vuosi: \n> ")
-                maxVuosi = konsoli.lue("Anna yläraja vuosi: \n> ")
-                # Tarkastetaan, että annetut arvot ovat numeroita.
-                try:
-                    minVuosi = int(minVuosi)
-                    maxVuosi = int(maxVuosi)
-                except ValueError:
-                    konsoli.kirjoita("VIRHE: Vuosien on oltava kokonaislukuja (esim. 2000).")
-                    continue # Takaisin loopin alkuun
-
-                # Tarkastetaan, että arvot eivät ole negatiivisia
-                if minVuosi < 0 or maxVuosi < 0:
-                    konsoli.kirjoita("VIRHE: Vuodet eivät voi olla negatiivisia.")
-                    continue
-                    
-                # Annetun minVuosi pitää olla pienempi, kuin maxVuosi
-                if minVuosi > maxVuosi:
-                    konsoli.kirjoita("VIRHE: Alaraja ei voi olla suurempi kuin yläraja!")
-                    continue
-
-                break
+            min_vuosi, max_vuosi = hanki_vuosirajat(konsoli)
             konsoli.kirjoita("LÄHDEVIITTEET RAJATTU AIKAVÄLILLÄ")
-            data_tulostukseen = jarjesta_komennon_mukaan(bib_data, 'rajaa', minVuosi, maxVuosi)
-
+            data_tulostukseen = jarjesta_komennon_mukaan(bib_data, 'rajaa', min_vuosi, max_vuosi)
         elif varmistus.lower() == "poistu":
             break
         else:
@@ -91,9 +68,9 @@ def jarjesta_komennon_mukaan(bib_data: BibliographyData, kentta: str, min_str=No
     elif kentta == 'vuosi':
         lajittelu_key = hanki_vuosi_lajitteluarvo_vanhin_ensin
     elif kentta == 'rajaa':
-        minVuosi = int(min_str)
-        maxVuosi = int(max_str)
-        return rajaa_vuodet(bib_data, minVuosi, maxVuosi)
+        min_vuosi = int(min_str)
+        max_vuosi = int(max_str)
+        return rajaa_vuodet(bib_data, min_vuosi, max_vuosi)
     else:
         # Palautetaan alkuperäinen data, jos kenttä on tuntematon
         return bib_data
@@ -168,7 +145,7 @@ def hanki_vuosi_lajitteluarvo_vanhin_ensin(item):
     return (1, 0)
 
 # Funktio rajaa viitteistä käyttäjän antamien vuosien perusteella halutut viitteet
-def rajaa_vuodet(bib_data, min_vuosi, max_vuosi):
+def rajaa_vuodet(bib_data, min_vuosi, max_vuosi):    
     suodatetut_itemit = OrderedDict()
 
     for key, entry in bib_data.entries.items():
@@ -181,5 +158,31 @@ def rajaa_vuodet(bib_data, min_vuosi, max_vuosi):
             # Tarkistetaan osuuko vuosi annetulle välille
             if min_vuosi <= vuosi <= max_vuosi:
                 suodatetut_itemit[key] = entry
-    
+
     return BibliographyData(suodatetut_itemit)
+
+# Apufunktio, joka tarkastaa vuosien rajat 'rajaa' komennolle.
+def hanki_vuosirajat(konsoli):
+    # Tarkastetaan, että käyttäjän antamat vuodet ovat hyväksyttyjä arvoja
+    while True:
+        min_str = konsoli.lue("Anna alaraja vuosi: \n> ")
+        max_str = konsoli.lue("Anna yläraja vuosi: \n> ")
+
+        # vuosien oltava numeroita
+        try:
+            min_v = int(min_str)
+            max_v = int(max_str)
+        except ValueError:
+            konsoli.kirjoita("VIRHE: Vuosien on oltava kokonaislukuja (esim. 2000).")
+            continue
+        
+        # vuosien oltava positiivisia
+        if min_v < 0 or max_v < 0:
+            konsoli.kirjoita("VIRHE: Vuodet eivät voi olla negatiivisia.")
+            continue
+        # Alaraja vuosille ei voi olla suurempi kuin yläraja.
+        if min_v > max_v:
+            konsoli.kirjoita("VIRHE: Alaraja ei voi olla suurempi kuin yläraja!")
+            continue
+
+        return min_v, max_v
