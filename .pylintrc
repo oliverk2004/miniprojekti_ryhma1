@@ -17,6 +17,7 @@ disable=raw-checker-failed,
         missing-function-docstring,
         missing-class-docstring,
         unnecessary-lambda-assignment
+        too-few-public-methods
 
 [FORMAT]
 # Sisennys yhden painalluksen tabulaattoria verran eli 4 välilyöntiä
