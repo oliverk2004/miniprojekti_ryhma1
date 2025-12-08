@@ -314,7 +314,7 @@ def test_listaa_viitteet_rajaa_vuodet_toimii(tmp_path):
 
     output_str = "\n".join(io.output)
 
-    assert "LÄHDEVIITTEET RAJATTU AIKAVÄLILLÄ" in output_str
+    assert "LÄHDEVIITTEET RAJATTU AIKAVÄLILLÄ." in output_str
     
     # Tarkistetaan, että SOPIVAT viitteet löytyvät
     assert "Sopiva Yksi" in output_str
@@ -355,4 +355,4 @@ def test_listaa_viitteet_rajaa_virheelliset_syotteet(tmp_path):
     assert "VIRHE: Alaraja ei voi olla suurempi kuin yläraja" in output_str
     
     # Tarkistetaan, että lopulta onnistuttiin (oikea otsikko tulostui)
-    assert "LÄHDEVIITTEET RAJATTU AIKAVÄLILLÄ" in output_str
+    assert "LÄHDEVIITTEET RAJATTU AIKAVÄLILLÄ." in output_str

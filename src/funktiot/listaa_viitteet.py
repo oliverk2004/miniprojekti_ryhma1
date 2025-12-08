@@ -39,7 +39,7 @@ def listaa_viitteet(bib_tiedosto, konsoli: KonsoliIO):
             data_tulostukseen = jarjesta_komennon_mukaan(bib_data, 'vuosi')
         elif varmistus.lower() == "rajaa":
             min_vuosi, max_vuosi = hanki_vuosirajat(konsoli)
-            konsoli.kirjoita("LÄHDEVIITTEET RAJATTU AIKAVÄLILLÄ")
+            konsoli.kirjoita("LÄHDEVIITTEET RAJATTU AIKAVÄLILLÄ.")
             data_tulostukseen = jarjesta_komennon_mukaan(bib_data, 'rajaa', min_vuosi, max_vuosi)
         elif varmistus.lower() == "poistu":
             break
