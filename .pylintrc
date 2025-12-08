@@ -1,7 +1,7 @@
 [MASTER]
 
 init-hook='import sys; sys.path.append("src")'
-ignore=tests,RobotLibrary.py,konsoli_IO.py,StubIO.py
+ignore=tests,RobotLibrary.py,konsoli_IO.py,StubIO.py, scraper_example.py
 
 [MESSAGE CONTROL]
 
@@ -16,7 +16,8 @@ disable=raw-checker-failed,
         missing-module-docstring,
         missing-function-docstring,
         missing-class-docstring,
-        unnecessary-lambda-assignment
+        unnecessary-lambda-assignment,
+        too-few-public-methods
 
 [FORMAT]
 # Sisennys yhden painalluksen tabulaattoria verran eli 4 välilyöntiä
