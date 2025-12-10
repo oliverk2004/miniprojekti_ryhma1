@@ -45,3 +45,13 @@ Käyttäjä Hakee Yksittäisen Viitteen
     [Arguments]    ${viiteavain}
     Aseta Syotteet    ${viiteavain}    peru
     Call Hae Viite
+
+Käyttäjä Antaa Virheellisiä Rajausarvoja
+    Aseta Syotteet    rajaa    abc    def    -5    2000    2020    2000    2000    2020    poistu
+    Call Listaa Viitteet
+
+Käyttäjä Listaa Viitteet Rajauksella
+    [Arguments]    ${min}    ${max}
+    # Syöttää: komento 'rajaa', alaraja, yläraja, lopetuskomento 'poistu'
+    Aseta Syotteet    rajaa    ${min}    ${max}    poistu
+    Call Listaa Viitteet
