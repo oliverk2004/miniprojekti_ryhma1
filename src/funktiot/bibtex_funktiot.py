@@ -22,6 +22,7 @@ def onko_olemassa(bib_tiedosto, bib_data, konsoli):
         return False
     return True
 
+# Tästä puuttuu vielä testit
 def yrita_lukemista_pythonilla(bib_tiedosto, konsoli):
     try:
         with open(bib_tiedosto, 'r', encoding='utf-8') as _:
