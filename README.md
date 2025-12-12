@@ -8,6 +8,8 @@ Linkki product backlogiin: https://docs.google.com/spreadsheets/d/1ZGKiEBo8ZcU5m
 
 Linkki projektin raporttiin: https://docs.google.com/document/d/126KoFM-egbqnhBl0h8pirD0TB9yP6m_VFkniAewlPeU/edit?usp=sharing
 
+Linkki Robot Framework hyväksymiskriteereihin: oma-polku/src/results/log.html
+
 Definition of done
 
 * Tested and works
