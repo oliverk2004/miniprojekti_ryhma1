@@ -16,15 +16,18 @@ class RobotLibrary:
         self.io = None
         self.test_bib_file = None
 
+    # Robot testejä varten...
     def luo_testi_io(self):
         #Luodaan StubIO testausta varten.
         self.io = StubIO()
         return "IO luotu"
 
+    # Robot testejä varten...
     def aseta_testi_tiedosto(self, tiedosto):
         self.test_bib_file = tiedosto
         return f"Testitiedosto luotu: {tiedosto}"
 
+    # Robot testejä varten...
     def luo_tyhja_bib_tiedosto(self, tiedosto):
         # Luodaan tyhjä .bib-tiedosto
         bib_data = BibliographyData()
@@ -46,6 +49,7 @@ class RobotLibrary:
         return "Viitteet listattu"
     
 
+    # Metodi, jolla käyttäjä lisää viitteen
     def call_lisaa_viite(self):
         if not self.io:     # Jos ei olisi jostain syystä luotu vielä
             self.luo_testi_io()
@@ -56,6 +60,7 @@ class RobotLibrary:
         return "Lisää viite suoritettu"
 
 
+    # Metodi, jolla käyttäjä poistaa viitteen
     def call_poista_viitteet(self):
         poista_viite(self.test_bib_file, self.io)
 
